@@ -1,19 +1,19 @@
 {
-  "host": "lootdrop.app",
+  "host": "web-rho-tawny-30.vercel.app",
   "name": "LootDrop - Crypto Rewards",
   "launcherName": "LootDrop",
   "display": "standalone",
-  "themeColor": "#7C3AED",
-  "themeColorDark": "#0F0B1A",
-  "navigationColor": "#0F0B1A",
-  "navigationColorDark": "#0F0B1A",
+  "themeColor": "#6750A4",
+  "themeColorDark": "#1C1B1F",
+  "navigationColor": "#1C1B1F",
+  "navigationColorDark": "#1C1B1F",
   "navigationDividerColor": "#00000000",
   "navigationDividerColorDark": "#00000000",
-  "backgroundColor": "#0F0B1A",
+  "backgroundColor": "#141218",
   "enableNotifications": true,
   "startUrl": "/",
-  "iconUrl": "https://lootdrop.app/icons/icon-512.svg",
-  "maskableIconUrl": "https://lootdrop.app/icons/icon-maskable-512.svg",
+  "iconUrl": "https://web-rho-tawny-30.vercel.app/icons/icon-512.svg",
+  "maskableIconUrl": "https://web-rho-tawny-30.vercel.app/icons/icon-maskable-512.svg",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
     "path": "lootdrop-keystore.jks",
@@ -26,24 +26,19 @@
       "name": "Scan QR Code",
       "shortName": "Scan",
       "url": "/scan",
-      "chosenIconUrl": "https://lootdrop.app/icons/icon-192.svg"
+      "chosenIconUrl": "https://web-rho-tawny-30.vercel.app/icons/icon-192.svg"
     }
   ],
   "generatorApp": "bubblewrap-cli",
-  "webManifestUrl": "https://lootdrop.app/manifest.json",
+  "webManifestUrl": "https://web-rho-tawny-30.vercel.app/manifest.json",
   "fallbackType": "customtabs",
   "enableSiteSettingsShortcut": false,
   "isChromeOSOnly": false,
   "isMetaQuest": false,
-  "fullScopeUrl": "https://lootdrop.app/",
+  "fullScopeUrl": "https://web-rho-tawny-30.vercel.app/",
   "minSdkVersion": 23,
   "orientation": "portrait",
-  "fingerprints": [
-    {
-      "_comment": "Replace with your actual SHA-256 fingerprint from Digital Asset Links verification",
-      "value": "AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99"
-    }
-  ],
+  "fingerprints": [],
   "additionalTrustedOrigins": [],
   "retainedBundles": [],
   "playBilling": {
