@@ -4,7 +4,7 @@
   <br/>
 </h1>
 
-<h4 align="center">Mobile-optimized PWA template for the Solana dApp Store</h4>
+<h4 align="center">Mobile-optimized TWA template for the Solana dApp Store</h4>
 
 <p align="center">
   <a href="https://web-rho-tawny-30.vercel.app">Live Demo</a> &nbsp;&bull;&nbsp;
@@ -42,9 +42,9 @@ Fullscreen TWA running on **Solana Mobile Seeker** (no browser chrome):
 
 ## About
 
-LootDrop is a **reference PWA template** for developers who want to publish mobile-optimized web apps to the **Solana dApp Store** via [Bubblewrap CLI](https://github.com/GoogleChromeLabs/bubblewrap).
+LootDrop is a **reference TWA (Trusted Web Activity) template** for developers who want to publish mobile-optimized apps to the **Solana dApp Store** via [Bubblewrap CLI](https://github.com/GoogleChromeLabs/bubblewrap).
 
-It showcases every mobile optimization needed for a production-quality Progressive Web App on Solana — from splash screens and offline caching to Material Design 3 theming and fullscreen Trusted Web Activity wrapping — using a location-based crypto rewards concept as a real-world demonstration.
+It showcases every mobile optimization needed for a production-quality TWA on Solana — from splash screens and offline caching to Material Design 3 theming and fullscreen rendering without browser chrome — using a location-based crypto rewards concept as a real-world demonstration.
 
 Built for the [Solana Mobile PWA Improved Template RFP](https://solanamobile.com/grants).
 
@@ -54,7 +54,7 @@ Built for the [Solana Mobile PWA Improved Template RFP](https://solanamobile.com
 
 | Deliverable | Status | Implementation |
 |---|---|---|
-| Sample PWA with Bubblewrap | Done | SvelteKit 5 + TWA via `twa-manifest.json` |
+| Sample TWA with Bubblewrap | Done | SvelteKit 5 + TWA via `twa-manifest.json` |
 | Improved splash screen | Done | Branded loading with MD3 circular progress |
 | Chrome default + WebView fallback | Done | Chrome Custom Tabs primary, WebView fallback |
 | Mobile-intuitive navigation | Done | MD3 bottom nav bar (Map, Scan, Rewards, Profile) |
@@ -82,8 +82,8 @@ Built for the [Solana Mobile PWA Improved Template RFP](https://solanamobile.com
 |---|---|
 | Framework | **SvelteKit 5** (Svelte 5 runes) + TypeScript |
 | Styling | **Tailwind CSS 4** + Material Design 3 tokens |
-| PWA | Web App Manifest + Service Worker (cache v2) |
-| Android | **Bubblewrap** / PWABuilder TWA |
+| TWA / PWA | Web App Manifest + Service Worker (cache v2) |
+| Android Wrap | **Bubblewrap** / PWABuilder → APK + AAB |
 | Domain Verify | Digital Asset Links (`.well-known/assetlinks.json`) |
 | Deployment | Vercel (adapter-static) |
 | Smart Contract | Anchor (Rust) — scaffold |
@@ -91,7 +91,7 @@ Built for the [Solana Mobile PWA Improved Template RFP](https://solanamobile.com
 
 ## Quick Start
 
-### Run the PWA locally
+### Run locally
 
 ```bash
 cd web
@@ -117,7 +117,7 @@ npm run check    # svelte-check + TypeScript
 
 ## Bubblewrap / TWA
 
-Wrap the PWA as an Android APK for the Solana dApp Store:
+Wrap as an Android APK/AAB for the Solana dApp Store:
 
 ```bash
 # 1. Install Bubblewrap
@@ -132,7 +132,7 @@ bubblewrap build
 # → app-release-signed.apk
 ```
 
-Alternatively, use [PWABuilder](https://www.pwabuilder.com/) for a zero-config Android package (APK + AAB).
+Alternatively, use [PWABuilder](https://www.pwabuilder.com/) for a zero-config TWA package (APK + AAB).
 
 ### Digital Asset Links
 
@@ -148,7 +148,7 @@ Get your fingerprint: `keytool -list -v -keystore your.keystore | grep SHA256`
 
 ```
 lootdrop/
-├── web/                          # SvelteKit PWA (main deliverable)
+├── web/                          # SvelteKit TWA (main deliverable)
 │   ├── src/
 │   │   ├── routes/               # /, /scan, /rewards, /profile
 │   │   └── lib/
@@ -158,7 +158,7 @@ lootdrop/
 │   │       └── types/            # TypeScript interfaces
 │   ├── static/
 │   │   ├── .well-known/          # Digital Asset Links
-│   │   ├── icons/                # PWA icons (192/512 PNG + maskable)
+│   │   ├── icons/                # App icons (192/512 PNG + maskable)
 │   │   ├── manifest.json         # Web App Manifest
 │   │   └── sw.js                 # Service worker
 │   ├── twa-manifest.json         # Bubblewrap TWA config
@@ -174,7 +174,7 @@ lootdrop/
 ## Roadmap
 
 - [x] **v0.1** — Project scaffold, smart contract, QR SDK
-- [x] **v0.2** — SvelteKit PWA with mobile UI
+- [x] **v0.2** — SvelteKit TWA with mobile UI
 - [x] **v0.3** — TWA wrapping + Material Design 3 + fullscreen DAL
 - [ ] **v0.4** — MWA / Seed Vault integration in TWA context
 - [ ] **v0.5** — Real camera QR scanning (zxing-js)
