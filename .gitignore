@@ -1,0 +1,59 @@
+# ─── Rust ─────────────────────────────────────────────────────────────────────
+/target/
+**/target/
+**/*.rs.bk
+Cargo.lock
+
+# ─── Anchor / Solana ─────────────────────────────────────────────────────────
+.anchor/
+test-ledger/
+node_modules/
+*.so
+
+# ─── Python ───────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.env
+*.egg
+
+# ─── Android / Kotlin ────────────────────────────────────────────────────────
+*.iml
+.gradle/
+/local.properties
+/.idea/
+.DS_Store
+/build/
+/app/build/
+/captures
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.jks
+*.keystore
+
+# ─── IDE ──────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── OS ───────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.log
+
+# ─── Secrets ──────────────────────────────────────────────────────────────────
+.env
+.env.local
+*.pem
+*.key
+keypair.json
+id.json

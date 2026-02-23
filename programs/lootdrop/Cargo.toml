@@ -1,0 +1,25 @@
+[package]
+name = "lootdrop"
+version = "0.1.0"
+description = "Location-based crypto rewards on Solana"
+edition = "2021"
+license = "MIT"
+repository = "https://github.com/kosiorkosa47/lootdrop"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "lootdrop"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.30.1"
+anchor-spl = "0.30.1"
+
+[dev-dependencies]
+anchor-client = "0.30.1"
