@@ -7,13 +7,15 @@
 
 	async function handleConnect(): Promise<void> {
 		connecting = true;
-		await new Promise((resolve) => setTimeout(resolve, 800));
-		connectWallet();
-		connecting = false;
+		try {
+			await connectWallet();
+		} finally {
+			connecting = false;
+		}
 	}
 
-	function handleDisconnect(): void {
-		disconnectWallet();
+	async function handleDisconnect(): Promise<void> {
+		await disconnectWallet();
 	}
 </script>
 

@@ -1,5 +1,8 @@
 import type { WalletState, AppSettings, Drop, ClaimedReward, UserStats } from '$lib/types';
 import { MOCK_DROPS, MOCK_CLAIMED_REWARDS, MOCK_USER_STATS } from '$lib/data/mock';
+import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { SolanaMobileWalletAdapter } from '@solana-mobile/wallet-adapter-mobile';
+import { config } from '$lib/config';
 
 /**
  * Reactive app state using Svelte 5 runes.
@@ -68,17 +71,66 @@ export function getIsRefreshing(): boolean {
 	return appState.isRefreshing;
 }
 
-/** Connect a mock wallet */
-export function connectWallet(): void {
-	const mockAddress = '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU';
+/** MWA adapter instance (lazy) */
+let mwaAdapter: SolanaMobileWalletAdapter | null = null;
+
+function getMwaAdapter(): SolanaMobileWalletAdapter {
+	if (!mwaAdapter) {
+		mwaAdapter = new SolanaMobileWalletAdapter({
+			appIdentity: {
+				name: config.app.name,
+				uri: config.twa.hostUrl,
+				icon: `${config.twa.hostUrl}/icons/icon-192.png`
+			},
+			cluster: config.network.cluster
+		});
+	}
+	return mwaAdapter;
+}
+
+/** Connect wallet via MWA (Seed Vault on Seeker), fallback to mock */
+export async function connectWallet(): Promise<void> {
+	try {
+		const adapter = getMwaAdapter();
+		await adapter.connect();
+
+		if (adapter.publicKey) {
+			const address = adapter.publicKey.toBase58();
+			appState.wallet.connected = true;
+			appState.wallet.address = address;
+
+			// Fetch real SOL balance
+			try {
+				const connection = new Connection(config.network.rpcUrl, 'confirmed');
+				const balance = await connection.getBalance(new PublicKey(address));
+				appState.wallet.balanceSol = balance / LAMPORTS_PER_SOL;
+			} catch {
+				appState.wallet.balanceSol = 0;
+			}
+
+			appState.wallet.balanceUsdc = 0;
+			return;
+		}
+	} catch (err) {
+		console.warn('MWA connection failed, using mock wallet:', err);
+	}
+
+	// Fallback: mock wallet for demo / non-Solana devices
 	appState.wallet.connected = true;
-	appState.wallet.address = mockAddress;
+	appState.wallet.address = '7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU';
 	appState.wallet.balanceSol = 2.45;
 	appState.wallet.balanceUsdc = 128.50;
 }
 
 /** Disconnect wallet */
-export function disconnectWallet(): void {
+export async function disconnectWallet(): Promise<void> {
+	try {
+		if (mwaAdapter?.connected) {
+			await mwaAdapter.disconnect();
+		}
+	} catch {
+		// ignore disconnect errors
+	}
 	appState.wallet.connected = false;
 	appState.wallet.address = null;
 	appState.wallet.balanceSol = 0;
