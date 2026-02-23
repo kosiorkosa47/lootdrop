@@ -39,10 +39,10 @@
 
 	function tokenColor(token: string): string {
 		switch (token) {
-			case 'SOL': return '#9945FF';
+			case 'SOL': return '#B58AFF';
 			case 'USDC': return '#14F195';
 			case 'BONK': return '#FFB74D';
-			default: return '#9945FF';
+			default: return '#B58AFF';
 		}
 	}
 </script>
@@ -71,12 +71,12 @@
 		<!-- Content -->
 		<div class="flex-1 min-w-0">
 			<div class="flex items-center justify-between gap-2">
-				<h3
+				<h2
 					class="font-medium text-sm truncate"
 					style="color: var(--md-sys-color-on-surface);"
 				>
 					{drop.businessName}
-				</h3>
+				</h2>
 				<span
 					class="text-sm font-semibold shrink-0 px-2.5 py-1 rounded-full"
 					style="

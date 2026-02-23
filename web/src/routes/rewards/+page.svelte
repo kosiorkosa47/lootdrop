@@ -6,10 +6,10 @@
 
 	function tokenColor(token: string): string {
 		switch (token) {
-			case 'SOL': return '#9945FF';
+			case 'SOL': return '#B58AFF';
 			case 'USDC': return '#14F195';
 			case 'BONK': return '#FFB74D';
-			default: return '#9945FF';
+			default: return '#B58AFF';
 		}
 	}
 </script>
