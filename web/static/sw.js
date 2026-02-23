@@ -1,7 +1,7 @@
 /// @ts-nocheck
-const CACHE_NAME = 'lootdrop-v2';
-const STATIC_CACHE = 'lootdrop-static-v2';
-const DYNAMIC_CACHE = 'lootdrop-dynamic-v2';
+const CACHE_NAME = 'lootdrop-v3';
+const STATIC_CACHE = 'lootdrop-static-v3';
+const DYNAMIC_CACHE = 'lootdrop-dynamic-v3';
 
 /** Assets to pre-cache on install */
 const PRECACHE_URLS = [
@@ -9,7 +9,7 @@ const PRECACHE_URLS = [
 	'/manifest.json',
 	'/icons/icon-192.png',
 	'/icons/icon-512.png',
-	'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap'
+	'/fonts/roboto-latin.woff2'
 ];
 
 /** Install: pre-cache shell assets */
