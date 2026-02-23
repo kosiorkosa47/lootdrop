@@ -101,7 +101,7 @@ Wrap the PWA as an Android app for the Solana dApp Store:
 
 ```bash
 # Install Bubblewrap CLI
-npm i -g @niccolli/niccolli
+npm i -g @niccolli/niccolli/niccolli
 
 # Initialize from twa-manifest.json
 cd web
@@ -110,7 +110,7 @@ bubblewrap init --manifest twa-manifest.json
 # Build APK
 bubblewrap build
 
-# The APK is ready for dApp Store submission
+# Output: app-release-signed.apk — ready for dApp Store
 ```
 
 ### TWA Configuration
@@ -127,20 +127,22 @@ See `web/twa-manifest.json` for the full Trusted Web Activity config:
 lootdrop/
 ├── web/                       # SvelteKit PWA (main deliverable)
 │   ├── src/
-│   │   ├── routes/            # Pages: map, scan, rewards, profile
-│   │   ├── lib/               # Components, stores, utils
-│   │   └── app.html           # HTML shell with PWA meta
+│   │   ├── routes/            # Pages: /, /scan, /rewards, /profile
+│   │   └── lib/
+│   │       ├── components/    # SplashScreen, BottomNav, DropCard, etc.
+│   │       ├── stores/        # Svelte 5 reactive state
+│   │       ├── data/          # Mock data (10 businesses, rewards)
+│   │       └── types/         # TypeScript interfaces
 │   ├── static/
 │   │   ├── manifest.json      # Web App Manifest
-│   │   └── icons/             # PWA icons
-│   ├── twa-manifest.json      # Bubblewrap config
+│   │   ├── sw.js              # Service worker (offline cache)
+│   │   └── icons/             # PWA icons (192/512, maskable)
+│   ├── twa-manifest.json      # Bubblewrap TWA config
 │   └── package.json
-├── programs/lootdrop/         # Anchor smart contract
+├── programs/lootdrop/         # Anchor smart contract (escrow + claims)
 │   └── src/lib.rs
 ├── backend/                   # FastAPI merchant API
 │   └── main.py
-├── sdk/                       # QR proof-of-visit SDK
-│   └── src/lib.rs
 └── docs/                      # Documentation
 ```
 
