@@ -18,7 +18,7 @@
 
 ## About
 
-LootDrop is a **location-based crypto rewards** PWA built as a reference implementation for publishing mobile-optimized web apps to the **Solana dApp Store** via [Bubblewrap CLI](https://github.com/niccolli/niccolli/niccolli/niccolli/niccolli/niccolli/niccolli/niccolli).
+LootDrop is a **location-based crypto rewards** PWA built as a reference implementation for publishing mobile-optimized web apps to the **Solana dApp Store** via [Bubblewrap CLI](https://github.com/GoogleChromeLabs/bubblewrap).
 
 It serves two purposes:
 1. A **functional dApp** — businesses drop SOL/USDC rewards at physical locations, users collect via QR scan
@@ -101,7 +101,7 @@ Wrap the PWA as an Android app for the Solana dApp Store:
 
 ```bash
 # Install Bubblewrap CLI
-npm i -g @niccolli/niccolli/niccolli
+npm i -g @bubblewrap/cli
 
 # Initialize from twa-manifest.json
 cd web
@@ -141,9 +141,8 @@ lootdrop/
 │   └── package.json
 ├── programs/lootdrop/         # Anchor smart contract (escrow + claims)
 │   └── src/lib.rs
-├── backend/                   # FastAPI merchant API
-│   └── main.py
-└── docs/                      # Documentation
+└── backend/                   # FastAPI merchant API
+    └── main.py
 ```
 
 ## Roadmap
