@@ -1,0 +1,59 @@
+{
+  "host": "lootdrop.app",
+  "name": "LootDrop - Crypto Rewards",
+  "launcherName": "LootDrop",
+  "display": "standalone",
+  "themeColor": "#7C3AED",
+  "themeColorDark": "#0F0B1A",
+  "navigationColor": "#0F0B1A",
+  "navigationColorDark": "#0F0B1A",
+  "navigationDividerColor": "#00000000",
+  "navigationDividerColorDark": "#00000000",
+  "backgroundColor": "#0F0B1A",
+  "enableNotifications": true,
+  "startUrl": "/",
+  "iconUrl": "https://lootdrop.app/icons/icon-512.svg",
+  "maskableIconUrl": "https://lootdrop.app/icons/icon-maskable-512.svg",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "lootdrop-keystore.jks",
+    "alias": "lootdrop"
+  },
+  "appVersionCode": 1,
+  "appVersionName": "0.1.0",
+  "shortcuts": [
+    {
+      "name": "Scan QR Code",
+      "shortName": "Scan",
+      "url": "/scan",
+      "chosenIconUrl": "https://lootdrop.app/icons/icon-192.svg"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://lootdrop.app/manifest.json",
+  "fallbackType": "customtabs",
+  "enableSiteSettingsShortcut": false,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://lootdrop.app/",
+  "minSdkVersion": 23,
+  "orientation": "portrait",
+  "fingerprints": [
+    {
+      "_comment": "Replace with your actual SHA-256 fingerprint from Digital Asset Links verification",
+      "value": "AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99"
+    }
+  ],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "playBilling": {
+    "enabled": false
+  },
+  "locationDelegation": {
+    "enabled": true
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "features": {}
+}

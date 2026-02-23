@@ -50,6 +50,11 @@ venv/
 Thumbs.db
 *.log
 
+# ─── Web / SvelteKit ────────────────────────────────────────────────────────
+.svelte-kit/
+web/build/
+vite.config.ts.timestamp-*
+
 # ─── Secrets ──────────────────────────────────────────────────────────────────
 .env
 .env.local

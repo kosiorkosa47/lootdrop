@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7C3AED"/>
+      <stop offset="100%" style="stop-color:#4F46E5"/>
+    </linearGradient>
+  </defs>
+  <!-- Full bleed background for maskable -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- Drop icon centered in safe zone -->
+  <path d="M256 102 C256 102 168 218 168 286 C168 334.6 207.4 374 256 374 C304.6 374 344 334.6 344 286 C344 218 256 102 256 102Z" fill="white" opacity="0.95"/>
+  <circle cx="256" cy="296" r="44" fill="#7C3AED"/>
+  <text x="256" y="312" text-anchor="middle" fill="white" font-family="system-ui" font-weight="700" font-size="40">S</text>
+</svg>
