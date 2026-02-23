@@ -18,11 +18,9 @@
 
 ## About
 
-LootDrop is a **location-based crypto rewards** PWA built as a reference implementation for publishing mobile-optimized web apps to the **Solana dApp Store** via [Bubblewrap CLI](https://github.com/GoogleChromeLabs/bubblewrap).
+LootDrop is a **sample PWA template** for Solana Mobile developers who want to publish mobile-optimized web apps to the **Solana dApp Store** using [Bubblewrap CLI](https://github.com/GoogleChromeLabs/bubblewrap).
 
-It serves two purposes:
-1. A **functional dApp** — businesses drop SOL/USDC rewards at physical locations, users collect via QR scan
-2. A **developer sample** — showcasing every PWA optimization needed for the Solana dApp Store
+It demonstrates all the mobile optimizations needed for a production-quality PWA on Solana — splash screens, offline support, bottom navigation, pull-to-refresh, dark mode, and more — wrapped in a location-based rewards concept as a real-world use case.
 
 Built for the [Solana Mobile PWA Improved Template RFP](https://solanamobile.com/grants).
 
