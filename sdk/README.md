@@ -1,12 +1,12 @@
-# LootDrop NFC Proof-of-Visit SDK
+# LootDrop QR Proof-of-Visit SDK
 
-Rust library for creating and verifying NFC-based proof-of-visit attestations used by the LootDrop protocol.
+Rust library for creating and verifying QR-based proof-of-visit attestations used by the LootDrop protocol.
 
 ## Overview
 
 The SDK handles:
 
-- **Tag provisioning** — Write campaign data + Ed25519 keypair to NFC tags
+- **Tag provisioning** — Write campaign data + Ed25519 keypair to QR codes
 - **Proof generation** — Create signed proof-of-visit messages on the tag's secure element
 - **Proof verification** — Verify proofs on-chain or off-chain before reward distribution
 
@@ -14,7 +14,7 @@ The SDK handles:
 
 ```
 ┌────────────────────┐
-│   NFC Tag (NTAG)   │
+│   QR Code (NTAG)   │
 │  ┌──────────────┐  │
 │  │ Ed25519 Key  │  │
 │  │ Campaign ID  │  │
@@ -42,7 +42,7 @@ The SDK handles:
 
 ## Proof Message Format
 
-48-byte message signed by the NFC tag:
+48-byte message signed by the QR code:
 
 | Offset | Size | Field |
 |--------|------|-------|
@@ -83,12 +83,12 @@ let proof = ProofMessage {
 
 let valid = verifier.verify(
     &proof.to_bytes(),
-    &nfc_signature,
+    &qr_signature,
     &tag_public_key,
 )?;
 ```
 
-## NFC Tag Requirements
+## QR Code Requirements
 
 - **Type**: NTAG 424 DNA or equivalent with crypto coprocessor
 - **Memory**: Minimum 256 bytes user memory
@@ -98,7 +98,7 @@ let valid = verifier.verify(
 
 ## Security Model
 
-1. Each NFC tag has a unique Ed25519 keypair burned at provisioning
+1. Each QR code has a unique Ed25519 keypair burned at provisioning
 2. The public key is registered on-chain when the campaign is created
 3. At claim time, the tag signs a challenge containing the claimer's wallet
 4. The signature is verified on-chain before releasing rewards

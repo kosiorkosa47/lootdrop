@@ -57,7 +57,7 @@ class CampaignCreate(BaseModel):
     reward_per_claim_lamports: int = Field(..., gt=0)
     max_claims: int = Field(..., gt=0, le=1_000_000)
     expiry_ts: int = Field(..., description="Unix timestamp for campaign expiry")
-    nfc_tag_pubkey: str = Field(..., min_length=32, max_length=44)
+    qr_code_pubkey: str = Field(..., min_length=32, max_length=44)
     latitude: float = Field(..., ge=-90, le=90)
     longitude: float = Field(..., ge=-180, le=180)
     radius_meters: int = Field(default=50, ge=10, le=5000)
@@ -74,7 +74,7 @@ class CampaignResponse(BaseModel):
     claims_count: int
     expiry_ts: int
     status: CampaignStatus
-    nfc_tag_pubkey: str
+    qr_code_pubkey: str
     latitude: float
     longitude: float
     radius_meters: int
@@ -86,7 +86,7 @@ class CampaignResponse(BaseModel):
 class ClaimRequest(BaseModel):
     campaign_id: str
     wallet_pubkey: str = Field(..., min_length=32, max_length=44)
-    nfc_signature: str = Field(..., min_length=128, max_length=128, description="Hex-encoded Ed25519 signature")
+    qr_signature: str = Field(..., min_length=128, max_length=128, description="Hex-encoded Ed25519 signature")
     proof_message: str = Field(..., min_length=96, max_length=96, description="Hex-encoded 48-byte proof")
     tag_pubkey: str = Field(..., min_length=32, max_length=44)
 
@@ -176,7 +176,7 @@ async def create_campaign(body: CampaignCreate):
         "claims_count": 0,
         "expiry_ts": body.expiry_ts,
         "status": CampaignStatus.ACTIVE,
-        "nfc_tag_pubkey": body.nfc_tag_pubkey,
+        "qr_code_pubkey": body.qr_code_pubkey,
         "latitude": body.latitude,
         "longitude": body.longitude,
         "radius_meters": body.radius_meters,
@@ -246,7 +246,7 @@ async def close_campaign(campaign_id: str, merchant_wallet: str = Query(...)):
 
 @app.post("/api/v1/claims", response_model=ClaimResponse)
 async def submit_claim(body: ClaimRequest):
-    """Submit a reward claim with NFC proof-of-visit."""
+    """Submit a reward claim with QR proof-of-visit."""
 
     campaign = campaigns_db.get(body.campaign_id)
     if not campaign:
@@ -268,7 +268,7 @@ async def submit_claim(body: ClaimRequest):
             claim["wallet_pubkey"] == body.wallet_pubkey):
             raise HTTPException(409, "Already claimed this reward")
 
-    # TODO: Verify NFC signature on-chain via Ed25519 precompile
+    # TODO: Verify QR signature on-chain via Ed25519 precompile
     # TODO: Submit claim_reward instruction to Solana program
 
     # Mock transaction signature (replace with actual Solana tx)

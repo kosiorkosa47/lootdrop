@@ -10,14 +10,14 @@ pub mod lootdrop {
     ///
     /// The merchant deposits SOL (or SPL tokens) into a PDA-controlled escrow.
     /// Each campaign defines: reward amount per claim, max claims, expiry, and
-    /// the NFC tag public key that gates redemption.
+    /// the QR code public key that gates redemption.
     pub fn create_campaign(
         ctx: Context<CreateCampaign>,
         campaign_id: u64,
         reward_per_claim: u64,
         max_claims: u32,
         expiry_ts: i64,
-        nfc_tag_pubkey: Pubkey,
+        qr_code_pubkey: Pubkey,
         metadata_uri: String,
     ) -> Result<()> {
         let campaign = &mut ctx.accounts.campaign;
@@ -59,7 +59,7 @@ pub mod lootdrop {
         campaign.max_claims = max_claims;
         campaign.claims_count = 0;
         campaign.expiry_ts = expiry_ts;
-        campaign.nfc_tag_pubkey = nfc_tag_pubkey;
+        campaign.qr_code_pubkey = qr_code_pubkey;
         campaign.metadata_uri = metadata_uri;
         campaign.created_at = clock.unix_timestamp;
         campaign.is_active = true;
@@ -78,13 +78,13 @@ pub mod lootdrop {
 
     /// Claims a reward from an active campaign.
     ///
-    /// The user must provide a valid NFC signature proving physical presence
+    /// The user must provide a valid QR signature proving physical presence
     /// at the tagged location. The signature is verified against the campaign's
-    /// registered NFC tag public key.
+    /// registered QR code public key.
     pub fn claim_reward(
         ctx: Context<ClaimReward>,
-        nfc_signature: [u8; 64],
-        nfc_message: Vec<u8>,
+        qr_signature: [u8; 64],
+        qr_message: Vec<u8>,
     ) -> Result<()> {
         let campaign = &mut ctx.accounts.campaign;
         let clock = Clock::get()?;
@@ -99,14 +99,14 @@ pub mod lootdrop {
             LootDropError::MaxClaimsReached
         );
 
-        // Verify NFC signature — the nfc_message should contain:
+        // Verify QR signature — the qr_message should contain:
         // [claimer_pubkey (32 bytes) | timestamp (8 bytes) | campaign_id (8 bytes)]
-        require!(nfc_message.len() == 48, LootDropError::InvalidNfcMessage);
+        require!(qr_message.len() == 48, LootDropError::InvalidQrMessage);
 
-        let claimer_bytes = &nfc_message[0..32];
+        let claimer_bytes = &qr_message[0..32];
         require!(
             claimer_bytes == ctx.accounts.claimer.key().as_ref(),
-            LootDropError::NfcClaimerMismatch
+            LootDropError::QrClaimerMismatch
         );
 
         // Ed25519 signature verification via Solana's ed25519 program
@@ -115,7 +115,7 @@ pub mod lootdrop {
         let reward_claim = &mut ctx.accounts.reward_claim;
         reward_claim.campaign = campaign.key();
         reward_claim.claimer = ctx.accounts.claimer.key();
-        reward_claim.nfc_signature = nfc_signature;
+        reward_claim.qr_signature = qr_signature;
         reward_claim.claimed_at = clock.unix_timestamp;
         reward_claim.amount = campaign.reward_per_claim;
         reward_claim.bump = ctx.bumps.reward_claim;
@@ -261,7 +261,7 @@ pub struct Campaign {
     pub max_claims: u32,
     pub claims_count: u32,
     pub expiry_ts: i64,
-    pub nfc_tag_pubkey: Pubkey,
+    pub qr_code_pubkey: Pubkey,
     pub metadata_uri: String,
     pub created_at: i64,
     pub is_active: bool,
@@ -276,7 +276,7 @@ impl Campaign {
         + 4   // max_claims
         + 4   // claims_count
         + 8   // expiry_ts
-        + 32  // nfc_tag_pubkey
+        + 32  // qr_code_pubkey
         + (4 + 200) // metadata_uri (String prefix + max 200 chars)
         + 8   // created_at
         + 1   // is_active
@@ -287,7 +287,7 @@ impl Campaign {
 pub struct RewardClaim {
     pub campaign: Pubkey,
     pub claimer: Pubkey,
-    pub nfc_signature: [u8; 64],
+    pub qr_signature: [u8; 64],
     pub claimed_at: i64,
     pub amount: u64,
     pub bump: u8,
@@ -297,7 +297,7 @@ impl RewardClaim {
     pub const SIZE: usize = 8  // discriminator
         + 32  // campaign
         + 32  // claimer
-        + 64  // nfc_signature
+        + 64  // qr_signature
         + 8   // claimed_at
         + 8   // amount
         + 1;  // bump
@@ -358,14 +358,14 @@ pub enum LootDropError {
     #[msg("All rewards have been claimed")]
     MaxClaimsReached,
 
-    #[msg("NFC message must be exactly 48 bytes")]
-    InvalidNfcMessage,
+    #[msg("QR message must be exactly 48 bytes")]
+    InvalidQrMessage,
 
-    #[msg("NFC message claimer does not match transaction signer")]
-    NfcClaimerMismatch,
+    #[msg("QR message claimer does not match transaction signer")]
+    QrClaimerMismatch,
 
-    #[msg("Invalid NFC signature")]
-    InvalidNfcSignature,
+    #[msg("Invalid QR signature")]
+    InvalidQrSignature,
 
     #[msg("Only the campaign merchant can perform this action")]
     Unauthorized,

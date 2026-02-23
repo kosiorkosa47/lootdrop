@@ -1,4 +1,4 @@
-//! LootDrop NFC Proof-of-Visit SDK
+//! LootDrop QR Proof-of-Visit SDK
 //!
 //! Provides tag provisioning, proof generation, and verification
 //! for the LootDrop location-based rewards protocol on Solana.
@@ -23,8 +23,8 @@ pub enum SdkError {
     InvalidProofLength { expected: usize, got: usize },
     /// Ed25519 signature verification failed.
     SignatureVerificationFailed,
-    /// NFC tag communication error.
-    NfcError(String),
+    /// QR code communication error.
+    QrError(String),
     /// The tag's public key doesn't match the campaign registration.
     TagKeyMismatch,
     /// Campaign ID in the proof doesn't match the expected campaign.
@@ -44,7 +44,7 @@ impl fmt::Display for SdkError {
             Self::SignatureVerificationFailed => {
                 write!(f, "Ed25519 signature verification failed")
             }
-            Self::NfcError(msg) => write!(f, "NFC error: {msg}"),
+            Self::QrError(msg) => write!(f, "QR error: {msg}"),
             Self::TagKeyMismatch => write!(f, "Tag public key doesn't match campaign"),
             Self::CampaignMismatch { expected, got } => {
                 write!(f, "Campaign mismatch: expected {expected}, got {got}")
@@ -63,7 +63,7 @@ pub type Result<T> = std::result::Result<T, SdkError>;
 
 // ─── Proof Message ───────────────────────────────────────────────────────────
 
-/// A proof-of-visit message that gets signed by the NFC tag.
+/// A proof-of-visit message that gets signed by the QR code.
 #[derive(Debug, Clone, PartialEq)]
 pub struct ProofMessage {
     /// The claimer's Solana wallet public key (32 bytes).
@@ -127,7 +127,7 @@ impl ProofMessage {
 
 // ─── Proof Verifier ──────────────────────────────────────────────────────────
 
-/// Verifies NFC proof-of-visit signatures.
+/// Verifies QR proof-of-visit signatures.
 pub struct ProofVerifier {
     /// Maximum allowed time skew in seconds between tag timestamp and
     /// verification time. Default: 300 (5 minutes).
@@ -220,7 +220,7 @@ impl Default for ProofVerifier {
 
 // ─── Tag Provisioner ─────────────────────────────────────────────────────────
 
-/// Configuration for provisioning an NFC tag with campaign data.
+/// Configuration for provisioning an QR code with campaign data.
 #[derive(Debug, Clone)]
 pub struct CampaignConfig {
     /// The on-chain campaign ID.
@@ -231,12 +231,12 @@ pub struct CampaignConfig {
     pub merchant_pubkey: String,
 }
 
-/// Handles NFC tag provisioning with campaign data and Ed25519 keys.
+/// Handles QR code provisioning with campaign data and Ed25519 keys.
 pub struct TagProvisioner {
-    // TODO: NFC reader/writer handle
+    // TODO: QR scanner/writer handle
 }
 
-/// Result of provisioning an NFC tag.
+/// Result of provisioning an QR code.
 #[derive(Debug)]
 pub struct ProvisionedTag {
     /// The tag's Ed25519 public key (32 bytes).
@@ -260,12 +260,12 @@ impl ProvisionedTag {
 impl TagProvisioner {
     /// Creates a new tag provisioner.
     ///
-    /// TODO: Accept NFC reader configuration.
+    /// TODO: Accept QR scanner configuration.
     pub fn new() -> Result<Self> {
         Ok(Self {})
     }
 
-    /// Provisions an NFC tag with campaign data and a fresh Ed25519 keypair.
+    /// Provisions an QR code with campaign data and a fresh Ed25519 keypair.
     ///
     /// The tag will contain:
     /// - NDEF URI: `lootdrop://claim/{campaign_id}`
@@ -275,10 +275,10 @@ impl TagProvisioner {
     /// The private key is generated and stored in the tag's secure element,
     /// and is never exposed to the provisioning device.
     pub fn provision_tag(&self, config: &CampaignConfig) -> Result<ProvisionedTag> {
-        // TODO: Implement actual NFC tag communication
+        // TODO: Implement actual QR code communication
         //
         // Steps:
-        // 1. Connect to NFC tag via reader
+        // 1. Connect to QR code via reader
         // 2. Send CREATE_KEY APDU to generate Ed25519 keypair in secure element
         // 3. Read back public key
         // 4. Write NDEF message with URI + signature + public key

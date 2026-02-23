@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Location-based crypto rewards for the real world.</strong><br/>
-  Walk in. Tap. Earn. Powered by Solana.
+  Walk in. Scan. Earn. Powered by Solana.
 </p>
 
 <p align="center">
@@ -21,15 +21,15 @@
 
 ## What is LootDrop?
 
-LootDrop is a location-based crypto rewards network built for **Solana Seeker**. Merchants and brands create geo-fenced reward campaigns. Users physically visit locations, tap an NFC tag with their Seeker device, and instantly receive token rewards via on-chain escrow.
+LootDrop is a location-based crypto rewards network built for **Solana Seeker**. Merchants and brands create geo-fenced reward campaigns. Users physically visit locations, scan a QR code with their Seeker device, and instantly receive token rewards via on-chain escrow.
 
-No QR codes. No check-ins. No trust assumptions. Just cryptographic proof-of-visit powered by NFC + Solana.
+No check-ins. No trust assumptions. Just cryptographic proof-of-visit powered by dynamic QR + Solana.
 
 ### Why?
 
 - **For merchants**: Drive real foot traffic with measurable on-chain analytics
 - **For users**: Earn crypto rewards just by visiting places you already go
-- **For Solana**: A killer use case for Seeker's NFC hardware
+- **For Solana**: A killer use case for Seeker's camera hardware
 
 ## How It Works
 
@@ -42,14 +42,14 @@ No QR codes. No check-ins. No trust assumptions. Just cryptographic proof-of-vis
                            │  Campaign created     │ Escrow funded
                            │                       │
 ┌─────────────┐     ┌──────▼───────┐     ┌────────▼────────┐
-│  NFC Tag     │◀───│  Seeker App  │────▶│  Claim Reward    │
+│  QR Code     │◀───│  Seeker App  │────▶│  Claim Reward    │
 │  @ Location  │───▶│  (Kotlin)    │     │  (on-chain)      │
 └─────────────┘     └──────────────┘     └─────────────────┘
 
 1. Merchant creates campaign → funds escrowed on-chain
-2. NFC tags deployed at physical locations
-3. User taps NFC tag with Solana Seeker
-4. App reads tag, signs proof-of-visit
+2. QR codes deployed at physical locations
+3. User scans QR code with Solana Seeker
+4. App reads QR code, signs proof-of-visit
 5. Smart contract verifies + releases reward
 6. Merchant sees analytics in real-time
 ```
@@ -61,7 +61,7 @@ No QR codes. No check-ins. No trust assumptions. Just cryptographic proof-of-vis
 | Smart Contract | Anchor (Rust) on Solana |
 | Mobile App | Kotlin + Solana Mobile SDK + Seed Vault |
 | Backend | FastAPI (Python) |
-| NFC SDK | Rust library for tag verification |
+| QR SDK | Rust library for tag verification |
 | Database | PostgreSQL + Redis |
 
 ## Getting Started
@@ -94,9 +94,9 @@ uvicorn main:app --reload
 
 ### Android App
 
-Open `app/` in Android Studio, connect a Solana Seeker device (or emulator with NFC support), and run.
+Open `app/` in Android Studio, connect a Solana Seeker device (or emulator with camera support), and run.
 
-### NFC SDK
+### QR SDK
 
 ```bash
 cd sdk
@@ -118,11 +118,11 @@ lootdrop/
 │       ├── AndroidManifest.xml
 │       └── java/com/lootdrop/
 │           ├── MainActivity.kt
-│           └── NfcVerifier.kt
+│           └── QrVerifier.kt
 ├── backend/               # FastAPI merchant backend
 │   ├── main.py
 │   └── requirements.txt
-├── sdk/                   # NFC proof-of-visit SDK
+├── sdk/                   # QR proof-of-visit SDK
 │   ├── src/lib.rs
 │   └── README.md
 └── docs/                  # Documentation
@@ -130,9 +130,9 @@ lootdrop/
 
 ## Roadmap
 
-- [x] **v0.1** — Project scaffold, smart contract skeleton, NFC SDK design
+- [x] **v0.1** — Project scaffold, smart contract skeleton, QR SDK design
 - [ ] **v0.2** — On-chain escrow + claim flow (devnet)
-- [ ] **v0.3** — Android app with NFC tap-to-claim
+- [ ] **v0.3** — Android app with QR scan-to-claim
 - [ ] **v0.4** — Merchant dashboard (web)
 - [ ] **v0.5** — Multi-token campaigns (SPL, compressed NFTs)
 - [ ] **v0.6** — Geofence verification layer
