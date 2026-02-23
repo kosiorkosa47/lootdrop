@@ -25,14 +25,14 @@
 		}
 
 		// Web Vitals — log to console in dev, could send to analytics in prod
-		const { onCLS, onFID, onLCP, onFCP, onTTFB } = await import('web-vitals');
+		const { onCLS, onINP, onLCP, onFCP, onTTFB } = await import('web-vitals');
 		const logVital = (metric: { name: string; value: number; rating: string }) => {
 			if (import.meta.env.DEV) {
 				console.log(`[Web Vital] ${metric.name}: ${metric.value.toFixed(1)} (${metric.rating})`);
 			}
 		};
 		onCLS(logVital);
-		onFID(logVital);
+		onINP(logVital);
 		onLCP(logVital);
 		onFCP(logVital);
 		onTTFB(logVital);

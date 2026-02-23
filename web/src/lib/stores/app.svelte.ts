@@ -1,7 +1,7 @@
 import type { WalletState, AppSettings, Drop, ClaimedReward, UserStats } from '$lib/types';
 import { MOCK_DROPS, MOCK_CLAIMED_REWARDS, MOCK_USER_STATS } from '$lib/data/mock';
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
-import { SolanaMobileWalletAdapter } from '@solana-mobile/wallet-adapter-mobile';
+import { SolanaMobileWalletAdapter, createDefaultAddressSelector, createDefaultAuthorizationResultCache } from '@solana-mobile/wallet-adapter-mobile';
 import { config } from '$lib/config';
 
 /**
@@ -77,12 +77,17 @@ let mwaAdapter: SolanaMobileWalletAdapter | null = null;
 function getMwaAdapter(): SolanaMobileWalletAdapter {
 	if (!mwaAdapter) {
 		mwaAdapter = new SolanaMobileWalletAdapter({
+			addressSelector: createDefaultAddressSelector(),
 			appIdentity: {
 				name: config.app.name,
 				uri: config.twa.hostUrl,
 				icon: `${config.twa.hostUrl}/icons/icon-192.png`
 			},
-			cluster: config.network.cluster
+			authorizationResultCache: createDefaultAuthorizationResultCache(),
+			cluster: config.network.cluster,
+			onWalletNotFound: async () => {
+				throw new Error('No Solana wallet found');
+			}
 		});
 	}
 	return mwaAdapter;

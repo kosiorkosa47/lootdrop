@@ -10,7 +10,7 @@ export const config = {
 	app: {
 		name: 'LootDrop',
 		tagline: 'Walk in. Scan. Earn.',
-		version: '0.3.0',
+		version: '0.4.0',
 		description: 'Location-based crypto rewards powered by Solana.',
 		poweredBy: 'Powered by Solana'
 	},
