@@ -1,77 +1,83 @@
-<p align="center">
-  <img src="docs/logo-placeholder.png" alt="LootDrop" width="200"/>
-</p>
-
-<h1 align="center">LootDrop</h1>
+<h1 align="center">LootDrop PWA</h1>
 
 <p align="center">
-  <strong>Location-based crypto rewards for the real world.</strong><br/>
-  Walk in. Scan. Earn. Powered by Solana.
+  <strong>Mobile-optimized Progressive Web App for Solana dApp Store</strong><br/>
+  A reference PWA sample + Bubblewrap template for Solana Mobile developers.
 </p>
 
 <p align="center">
-  <a href="#how-it-works">How It Works</a> •
+  <a href="#about">About</a> •
+  <a href="#pwa-features">PWA Features</a> •
   <a href="#tech-stack">Tech Stack</a> •
   <a href="#getting-started">Getting Started</a> •
-  <a href="#roadmap">Roadmap</a> •
+  <a href="#bubblewrap">Bubblewrap</a> •
   <a href="#license">License</a>
 </p>
 
 ---
 
-## What is LootDrop?
+## About
 
-LootDrop is a location-based crypto rewards network built for **Solana Seeker**. Merchants and brands create geo-fenced reward campaigns. Users physically visit locations, scan a QR code with their Seeker device, and instantly receive token rewards via on-chain escrow.
+LootDrop is a **location-based crypto rewards** PWA built as a reference implementation for publishing mobile-optimized web apps to the **Solana dApp Store** via [Bubblewrap CLI](https://github.com/niccolli/niccolli/niccolli/niccolli/niccolli/niccolli/niccolli/niccolli).
 
-No check-ins. No trust assumptions. Just cryptographic proof-of-visit powered by dynamic QR + Solana.
+It serves two purposes:
+1. A **functional dApp** — businesses drop SOL/USDC rewards at physical locations, users collect via QR scan
+2. A **developer sample** — showcasing every PWA optimization needed for the Solana dApp Store
 
-### Why?
+Built for the [Solana Mobile PWA Improved Template RFP](https://solanamobile.com/grants).
 
-- **For merchants**: Drive real foot traffic with measurable on-chain analytics
-- **For users**: Earn crypto rewards just by visiting places you already go
-- **For Solana**: A killer use case for Seeker's camera hardware
+## PWA Features
 
-## How It Works
+### Mobile Optimizations (RFP Deliverables)
 
-```
-┌─────────────┐     ┌──────────────┐     ┌─────────────────┐
-│   Merchant   │────▶│  LootDrop    │────▶│  Solana Program  │
-│   Dashboard  │     │  Backend     │     │  (Anchor)        │
-└─────────────┘     └──────┬───────┘     └────────┬────────┘
-                           │                       │
-                           │  Campaign created     │ Escrow funded
-                           │                       │
-┌─────────────┐     ┌──────▼───────┐     ┌────────▼────────┐
-│  QR Code     │◀───│  Seeker App  │────▶│  Claim Reward    │
-│  @ Location  │───▶│  (Kotlin)    │     │  (on-chain)      │
-└─────────────┘     └──────────────┘     └─────────────────┘
+| Feature | Implementation |
+|---------|---------------|
+| **Splash Screen** | Custom branded loading with skeleton states |
+| **Chrome Default** | TWA configured for Chrome Custom Tabs with WebView fallback |
+| **Bottom Navigation** | 4-tab nav: Map, Scan, Rewards, Profile |
+| **Pull-to-Refresh** | Native-feeling refresh on feed |
+| **Offline Support** | Service worker with cache-first strategy |
+| **Dark Mode** | System-preference auto-detect + manual toggle |
+| **Touch Targets** | Min 44px tap areas, haptic-style feedback |
+| **Safe Areas** | Notch and bottom bar handling |
 
-1. Merchant creates campaign → funds escrowed on-chain
-2. QR codes deployed at physical locations
-3. User scans QR code with Solana Seeker
-4. App reads QR code, signs proof-of-visit
-5. Smart contract verifies + releases reward
-6. Merchant sees analytics in real-time
-```
+### Solana Integration
+
+- Mobile Wallet Adapter (MWA) within PWA/TWA context
+- Seed Vault compatible signing
+- Solana Pay deep links for merchant QR codes
+- On-chain reward escrow via Anchor smart contracts
 
 ## Tech Stack
 
 | Layer | Technology |
 |-------|-----------|
-| Smart Contract | Anchor (Rust) on Solana |
-| Mobile App | Kotlin + Solana Mobile SDK + Seed Vault |
+| Frontend | SvelteKit 5 + TypeScript |
+| Styling | Tailwind CSS |
+| Solana | @solana/web3.js + wallet-adapter |
+| PWA | Web App Manifest + Service Worker |
+| Android Wrap | Bubblewrap CLI (TWA) |
+| Smart Contract | Anchor (Rust) |
 | Backend | FastAPI (Python) |
-| QR SDK | Rust library for tag verification |
-| Database | PostgreSQL + Redis |
 
 ## Getting Started
 
-### Prerequisites
+### PWA (Web App)
 
-- Rust 1.75+ & Anchor CLI 0.30+
-- Android Studio Hedgehog+
-- Python 3.11+
-- Solana CLI 1.18+
+```bash
+cd web
+npm install
+npm run dev
+# Opens at http://localhost:5173
+```
+
+### Build for Production
+
+```bash
+cd web
+npm run build
+npm run preview
+```
 
 ### Smart Contract
 
@@ -79,69 +85,73 @@ No check-ins. No trust assumptions. Just cryptographic proof-of-visit powered by
 cd programs/lootdrop
 anchor build
 anchor test
-anchor deploy --provider.cluster devnet
 ```
 
 ### Backend
 
 ```bash
 cd backend
-python -m venv .venv
-source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-### Android App
+## Bubblewrap
 
-Open `app/` in Android Studio, connect a Solana Seeker device (or emulator with camera support), and run.
-
-### QR SDK
+Wrap the PWA as an Android app for the Solana dApp Store:
 
 ```bash
-cd sdk
-cargo build
-cargo test
+# Install Bubblewrap CLI
+npm i -g @niccolli/niccolli
+
+# Initialize from twa-manifest.json
+cd web
+bubblewrap init --manifest twa-manifest.json
+
+# Build APK
+bubblewrap build
+
+# The APK is ready for dApp Store submission
 ```
+
+### TWA Configuration
+
+See `web/twa-manifest.json` for the full Trusted Web Activity config:
+- Chrome Custom Tabs as default browser
+- Fallback to system WebView
+- Custom splash screen with fade
+- Digital Asset Links placeholder
 
 ## Project Structure
 
 ```
 lootdrop/
-├── programs/lootdrop/     # Anchor smart contract
-│   ├── src/lib.rs         # Program instructions & accounts
-│   ├── Cargo.toml
-│   └── Anchor.toml
-├── app/                   # Android/Kotlin Seeker app
-│   ├── build.gradle.kts
-│   └── src/main/
-│       ├── AndroidManifest.xml
-│       └── java/com/lootdrop/
-│           ├── MainActivity.kt
-│           └── QrVerifier.kt
-├── backend/               # FastAPI merchant backend
-│   ├── main.py
-│   └── requirements.txt
-├── sdk/                   # QR proof-of-visit SDK
-│   ├── src/lib.rs
-│   └── README.md
-└── docs/                  # Documentation
+├── web/                       # SvelteKit PWA (main deliverable)
+│   ├── src/
+│   │   ├── routes/            # Pages: map, scan, rewards, profile
+│   │   ├── lib/               # Components, stores, utils
+│   │   └── app.html           # HTML shell with PWA meta
+│   ├── static/
+│   │   ├── manifest.json      # Web App Manifest
+│   │   └── icons/             # PWA icons
+│   ├── twa-manifest.json      # Bubblewrap config
+│   └── package.json
+├── programs/lootdrop/         # Anchor smart contract
+│   └── src/lib.rs
+├── backend/                   # FastAPI merchant API
+│   └── main.py
+├── sdk/                       # QR proof-of-visit SDK
+│   └── src/lib.rs
+└── docs/                      # Documentation
 ```
 
 ## Roadmap
 
-- [x] **v0.1** — Project scaffold, smart contract skeleton, QR SDK design
-- [ ] **v0.2** — On-chain escrow + claim flow (devnet)
-- [ ] **v0.3** — Android app with QR scan-to-claim
-- [ ] **v0.4** — Merchant dashboard (web)
-- [ ] **v0.5** — Multi-token campaigns (SPL, compressed NFTs)
-- [ ] **v0.6** — Geofence verification layer
-- [ ] **v0.7** — Analytics API + webhook integrations
+- [x] **v0.1** — Project scaffold, smart contract, QR SDK
+- [x] **v0.2** — SvelteKit PWA with mobile UI
+- [ ] **v0.3** — Bubblewrap wrapping + dApp Store submission
+- [ ] **v0.4** — MWA integration in TWA context
+- [ ] **v0.5** — Merchant dashboard
 - [ ] **v1.0** — Mainnet launch
-
-## Contributing
-
-We're building in the open. Issues and PRs welcome. See [CONTRIBUTING.md](docs/CONTRIBUTING.md) for guidelines.
 
 ## License
 
