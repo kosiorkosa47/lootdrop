@@ -9,23 +9,31 @@ import { MOCK_DROPS, MOCK_CLAIMED_REWARDS, MOCK_USER_STATS } from '$lib/data/moc
  */
 
 // Root state container - single object, never reassigned, only mutated
-const appState = $state({
+const appState: {
+	wallet: WalletState;
+	settings: AppSettings;
+	drops: Drop[];
+	claimedRewards: ClaimedReward[];
+	userStats: UserStats;
+	splashVisible: boolean;
+	isRefreshing: boolean;
+} = $state({
 	wallet: {
 		connected: false,
-		address: null as string | null,
+		address: null,
 		balanceSol: 0,
 		balanceUsdc: 0
-	} satisfies WalletState,
+	},
 
 	settings: {
 		darkMode: true,
 		notifications: true
-	} satisfies AppSettings,
+	},
 
-	drops: [...MOCK_DROPS] as Drop[],
-	claimedRewards: [...MOCK_CLAIMED_REWARDS] as ClaimedReward[],
+	drops: [...MOCK_DROPS],
+	claimedRewards: [...MOCK_CLAIMED_REWARDS],
 
-	userStats: { ...MOCK_USER_STATS } as UserStats,
+	userStats: { ...MOCK_USER_STATS },
 
 	splashVisible: true,
 	isRefreshing: false

@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { getWallet, connectWallet, disconnectWallet, truncateAddress, getSettings } from '$lib/stores/app.svelte';
+	import { getWallet, connectWallet, disconnectWallet, truncateAddress } from '$lib/stores/app.svelte';
 
 	let connecting = $state(false);
 
 	const wallet = $derived(getWallet());
-	const darkMode = $derived(getSettings().darkMode);
 
 	async function handleConnect(): Promise<void> {
 		connecting = true;
@@ -19,24 +18,38 @@
 </script>
 
 {#if wallet.connected && wallet.address}
+	<!-- MD3 Filled Tonal Button — Connected state -->
 	<button
-		class="flex items-center gap-2 h-10 px-4 rounded-xl text-sm font-medium transition-all active:scale-95 touch-manipulation {darkMode ? 'text-[#A78BFA]' : 'text-[#7C3AED]'}"
-		style="background: {darkMode ? 'rgba(124, 58, 237, 0.15)' : 'rgba(124, 58, 237, 0.1)'};"
+		class="flex items-center gap-2 px-4 text-sm font-medium transition-colors active:scale-95 touch-manipulation"
+		style="
+			height: 40px;
+			border-radius: 20px;
+			background-color: var(--md-sys-color-secondary-container);
+			color: var(--md-sys-color-on-secondary-container);
+		"
 		onclick={handleDisconnect}
 		title="Tap to disconnect"
 	>
-		<div class="w-2 h-2 rounded-full bg-[#10B981]"></div>
+		<div class="w-2 h-2 rounded-full" style="background-color: var(--color-success);"></div>
 		{truncateAddress(wallet.address)}
 	</button>
 {:else}
+	<!-- MD3 Filled Tonal Button — Connect state -->
 	<button
-		class="flex items-center gap-2 h-10 px-4 rounded-xl text-sm font-semibold text-white transition-all active:scale-95 touch-manipulation"
-		style="background: linear-gradient(135deg, #7C3AED, #4F46E5);"
+		class="flex items-center gap-2 px-5 text-sm font-medium transition-colors active:scale-95 touch-manipulation"
+		style="
+			height: 40px;
+			border-radius: 20px;
+			background-color: var(--md-sys-color-secondary-container);
+			color: var(--md-sys-color-on-secondary-container);
+		"
 		onclick={handleConnect}
 		disabled={connecting}
 	>
 		{#if connecting}
-			<div class="w-4 h-4 border-2 border-white/30 border-t-white rounded-full" style="animation: spin 0.6s linear infinite;"></div>
+			<svg class="w-4 h-4" viewBox="0 0 24 24" style="animation: spin 0.8s linear infinite;">
+				<circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="15.7 15.7" stroke-linecap="round" />
+			</svg>
 		{:else}
 			<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 				<rect x="2" y="6" width="20" height="12" rx="2" />

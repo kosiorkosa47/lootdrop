@@ -23,57 +23,60 @@
 
 {#if visible}
 	<div
-		class="fixed inset-0 z-50 flex flex-col items-center justify-center"
+		class="fixed inset-0 z-50 flex flex-col items-center justify-center transition-opacity duration-300"
 		class:opacity-0={fadeOut}
-		class:transition-opacity={fadeOut}
-		class:duration-400={fadeOut}
-		style="background: linear-gradient(135deg, #0F0B1A 0%, #1a1040 50%, #0F0B1A 100%);"
+		style="background-color: var(--md-sys-color-surface);"
 	>
-		<!-- Animated glow background -->
+		<!-- App icon -->
 		<div
-			class="absolute inset-0 opacity-30"
-			style="background: radial-gradient(circle at 50% 40%, rgba(124, 58, 237, 0.4), transparent 60%);"
-		></div>
-
-		<!-- Logo -->
-		<div class="relative mb-8" style="animation: bounce-in 0.6s ease-out;">
-			<div
-				class="w-28 h-28 rounded-3xl flex items-center justify-center"
-				style="background: linear-gradient(135deg, #7C3AED, #4F46E5); animation: pulse-glow 2s ease-in-out infinite;"
-			>
-				<svg viewBox="0 0 80 80" class="w-16 h-16">
-					<path
-						d="M40 8 C40 8 16 40 16 56 C16 69.3 26.7 80 40 80 C53.3 80 64 69.3 64 56 C64 40 40 8 40 8Z"
-						fill="white"
-						opacity="0.95"
-					/>
-					<circle cx="40" cy="58" r="12" fill="#7C3AED" />
-					<text x="40" y="64" text-anchor="middle" fill="white" font-family="system-ui" font-weight="700" font-size="14">S</text>
-				</svg>
-			</div>
+			class="w-24 h-24 rounded-3xl flex items-center justify-center mb-6"
+			style="
+				background-color: var(--md-sys-color-primary-container);
+				animation: fade-in 0.3s cubic-bezier(0.2, 0, 0, 1);
+			"
+		>
+			<svg viewBox="0 0 80 80" class="w-14 h-14">
+				<path
+					d="M40 8 C40 8 16 40 16 56 C16 69.3 26.7 80 40 80 C53.3 80 64 69.3 64 56 C64 40 40 8 40 8Z"
+					fill="var(--md-sys-color-on-primary-container)"
+					opacity="0.9"
+				/>
+				<circle cx="40" cy="58" r="12" fill="var(--md-sys-color-primary-container)" />
+				<text x="40" y="64" text-anchor="middle" fill="var(--md-sys-color-on-primary-container)" font-family="'Roboto', system-ui" font-weight="700" font-size="14">S</text>
+			</svg>
 		</div>
 
 		<!-- App name -->
-		<h1 class="text-3xl font-bold text-white mb-2 tracking-tight" style="animation: fade-in 0.8s ease-out 0.3s both;">
+		<h1
+			class="text-2xl font-medium mb-1 tracking-tight"
+			style="color: var(--md-sys-color-on-surface); animation: fade-in 0.4s cubic-bezier(0.2, 0, 0, 1) 0.15s both;"
+		>
 			LootDrop
 		</h1>
-		<p class="text-sm text-[#8B85A0] mb-12" style="animation: fade-in 0.8s ease-out 0.5s both;">
+		<p
+			class="text-sm mb-10"
+			style="color: var(--md-sys-color-on-surface-variant); animation: fade-in 0.4s cubic-bezier(0.2, 0, 0, 1) 0.25s both;"
+		>
 			Walk in. Scan. Earn.
 		</p>
 
-		<!-- Progress bar -->
-		<div class="w-48 h-1 rounded-full bg-white/10 overflow-hidden" style="animation: fade-in 0.8s ease-out 0.7s both;">
-			<div
-				class="h-full rounded-full transition-all duration-100 ease-linear"
-				style="width: {progress}%; background: linear-gradient(90deg, #7C3AED, #A78BFA);"
-			></div>
-		</div>
-
-		<!-- Skeleton loading indicators -->
-		<div class="absolute bottom-20 left-0 right-0 px-6 space-y-3" style="animation: fade-in 0.8s ease-out 0.9s both;">
-			{#each [1, 2, 3] as _}
-				<div class="h-16 rounded-xl bg-white/5 animate-pulse"></div>
-			{/each}
+		<!-- MD3 Circular progress indicator -->
+		<div
+			class="w-12 h-12"
+			style="animation: fade-in 0.4s cubic-bezier(0.2, 0, 0, 1) 0.35s both;"
+		>
+			<svg viewBox="0 0 48 48" class="w-full h-full" style="animation: spin 1.4s linear infinite;">
+				<circle
+					cx="24"
+					cy="24"
+					r="20"
+					fill="none"
+					stroke="var(--md-sys-color-primary)"
+					stroke-width="4"
+					stroke-linecap="round"
+					style="animation: md3-circular-progress 1.4s ease-in-out infinite;"
+				/>
+			</svg>
 		</div>
 	</div>
 {/if}

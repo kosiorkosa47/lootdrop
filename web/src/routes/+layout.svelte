@@ -30,8 +30,12 @@
 
 {#if showApp}
 	<main
-		class="min-h-screen pb-[calc(var(--tab-bar-height)+var(--sab))]"
-		style="padding-top: var(--sat); animation: fade-in 0.4s ease-out;"
+		class="min-h-screen"
+		style="
+			padding-top: var(--sat);
+			padding-bottom: calc(var(--nav-bar-height) + var(--sab));
+			animation: fade-in 0.3s cubic-bezier(0.2, 0, 0, 1);
+		"
 	>
 		{@render children()}
 	</main>

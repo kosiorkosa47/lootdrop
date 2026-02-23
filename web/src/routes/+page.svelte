@@ -2,9 +2,8 @@
 	import DropCard from '$lib/components/DropCard.svelte';
 	import PullToRefresh from '$lib/components/PullToRefresh.svelte';
 	import WalletButton from '$lib/components/WalletButton.svelte';
-	import { getDrops, refreshDrops, getWallet, getSettings } from '$lib/stores/app.svelte';
+	import { getDrops, refreshDrops, getWallet } from '$lib/stores/app.svelte';
 
-	const darkMode = $derived(getSettings().darkMode);
 	const wallet = $derived(getWallet());
 	const drops = $derived(getDrops());
 
@@ -24,49 +23,63 @@
 
 <PullToRefresh onRefresh={refreshDrops}>
 	<div class="px-4 pt-4">
-		<!-- Header -->
-		<div class="flex items-center justify-between mb-6">
-			<div>
-				<h1 class="text-2xl font-bold tracking-tight {darkMode ? 'text-white' : 'text-gray-900'}">
-					Nearby Drops
-				</h1>
-				<p class="text-sm text-[#8B85A0] mt-0.5">
+		<!-- MD3 Top App Bar (Large) -->
+		<div class="mb-2">
+			<div class="flex items-center justify-between mb-1">
+				<p class="text-sm font-medium" style="color: var(--md-sys-color-on-surface-variant);">
 					{availableCount} reward{availableCount !== 1 ? 's' : ''} available
 				</p>
+				<WalletButton />
 			</div>
-			<WalletButton />
+			<h1
+				class="text-3xl font-normal tracking-tight"
+				style="color: var(--md-sys-color-on-surface);"
+			>
+				Nearby Drops
+			</h1>
 		</div>
 
-		<!-- Balance bar (shown when wallet connected) -->
+		<!-- Balance card (shown when wallet connected) -->
 		{#if wallet.connected}
 			<div
-				class="rounded-2xl p-4 mb-5 relative overflow-hidden"
-				style="background: linear-gradient(135deg, rgba(124, 58, 237, 0.15), rgba(79, 70, 229, 0.08)); border: 1px solid rgba(124, 58, 237, 0.15); animation: slide-up 0.4s ease-out;"
+				class="mb-4 mt-4"
+				style="
+					animation: slide-up 0.3s cubic-bezier(0.2, 0, 0, 1);
+					background-color: var(--md-sys-color-primary-container);
+					border-radius: var(--md-sys-shape-corner-medium);
+					padding: 16px;
+				"
 			>
-				<div class="absolute inset-0 opacity-10 pointer-events-none"
-					style="background: linear-gradient(135deg, white 0%, transparent 40%);"
-				></div>
-
-				<div class="flex items-center justify-around relative">
+				<div class="flex items-center justify-around">
 					<div class="text-center">
-						<p class="text-xs text-[#8B85A0] mb-0.5">SOL Balance</p>
-						<p class="text-lg font-bold" style="color: #9945FF;">{wallet.balanceSol.toFixed(2)}</p>
+						<p class="text-xs mb-0.5" style="color: var(--md-sys-color-on-primary-container); opacity: 0.7;">SOL Balance</p>
+						<p class="text-lg font-semibold" style="color: var(--md-sys-color-on-primary-container);">
+							{wallet.balanceSol.toFixed(2)}
+						</p>
 					</div>
-					<div class="w-px h-8 bg-white/10"></div>
+					<div class="w-px h-8" style="background-color: var(--md-sys-color-on-primary-container); opacity: 0.2;"></div>
 					<div class="text-center">
-						<p class="text-xs text-[#8B85A0] mb-0.5">USDC Balance</p>
-						<p class="text-lg font-bold" style="color: #2775CA;">${wallet.balanceUsdc.toFixed(2)}</p>
+						<p class="text-xs mb-0.5" style="color: var(--md-sys-color-on-primary-container); opacity: 0.7;">USDC Balance</p>
+						<p class="text-lg font-semibold" style="color: var(--md-sys-color-on-primary-container);">
+							${wallet.balanceUsdc.toFixed(2)}
+						</p>
 					</div>
 				</div>
 			</div>
 		{/if}
 
-		<!-- Category filter pills -->
-		<div class="flex gap-2 mb-4 overflow-x-auto pb-1 -mx-4 px-4 scrollbar-hide">
+		<!-- MD3 Filter Chips -->
+		<div class="flex gap-2 mb-4 mt-4 overflow-x-auto pb-1 -mx-4 px-4" style="-ms-overflow-style: none; scrollbar-width: none;">
 			{#each ['All', 'Food', 'Fitness', 'Retail', 'Fun', 'Services'] as category, i}
 				<button
-					class="shrink-0 h-8 px-4 rounded-full text-xs font-medium transition-all active:scale-95 touch-manipulation {i === 0 ? 'bg-[#7C3AED] text-white' : darkMode ? 'text-[#8B85A0]' : 'bg-gray-100 text-gray-600'}"
-					style={i !== 0 && darkMode ? 'background: rgba(255,255,255,0.08)' : ''}
+					class="shrink-0 h-8 px-4 text-sm font-medium transition-colors active:scale-95 touch-manipulation"
+					style="
+						border-radius: var(--md-sys-shape-corner-small);
+						{i === 0
+							? `background-color: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container);`
+							: `background-color: transparent; color: var(--md-sys-color-on-surface-variant); border: 1px solid var(--md-sys-color-outline);`
+						}
+					"
 				>
 					{category}
 				</button>
