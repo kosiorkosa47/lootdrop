@@ -59,7 +59,7 @@
 			<div class="text-center" style="animation: fade-in 0.3s cubic-bezier(0.2, 0, 0, 1);">
 				<!-- Viewfinder -->
 				<div
-					class="w-64 h-64 mx-auto flex items-center justify-center mb-8 relative"
+					class="w-full max-w-[280px] aspect-square mx-auto flex items-center justify-center mb-8 relative"
 					style="
 						border: 2px dashed var(--md-sys-color-outline);
 						border-radius: var(--md-sys-shape-corner-extra-large);
@@ -83,9 +83,8 @@
 
 				<!-- MD3 Filled Button -->
 				<button
-					class="h-14 px-8 text-base font-medium transition-colors active:scale-95 touch-manipulation"
+					class="h-14 px-8 w-full max-w-xs text-base font-medium transition-colors active:scale-95 touch-manipulation"
 					style="
-						min-width: 200px;
 						border-radius: var(--md-sys-shape-corner-full);
 						background-color: var(--md-sys-color-primary);
 						color: var(--md-sys-color-on-primary);
@@ -113,7 +112,7 @@
 			<div class="text-center" style="animation: fade-in 0.2s cubic-bezier(0.2, 0, 0, 1);">
 				<!-- Camera preview mock -->
 				<div
-					class="w-64 h-64 mx-auto flex items-center justify-center mb-8 relative overflow-hidden"
+					class="w-full max-w-[280px] aspect-square mx-auto flex items-center justify-center mb-8 relative overflow-hidden"
 					style="
 						border-radius: var(--md-sys-shape-corner-extra-large);
 						background-color: var(--md-sys-color-surface-container-highest);
@@ -137,9 +136,8 @@
 
 				<!-- MD3 Filled Button -->
 				<button
-					class="h-14 px-8 text-base font-medium transition-colors active:scale-95 touch-manipulation"
+					class="h-14 px-8 w-full max-w-xs text-base font-medium transition-colors active:scale-95 touch-manipulation"
 					style="
-						min-width: 200px;
 						border-radius: var(--md-sys-shape-corner-full);
 						background-color: var(--md-sys-color-primary);
 						color: var(--md-sys-color-on-primary);
@@ -184,9 +182,8 @@
 				</p>
 
 				<button
-					class="h-14 px-8 text-base font-medium transition-colors active:scale-95 touch-manipulation"
+					class="h-14 px-8 w-full max-w-xs text-base font-medium transition-colors active:scale-95 touch-manipulation"
 					style="
-						min-width: 200px;
 						border-radius: var(--md-sys-shape-corner-full);
 						background-color: var(--md-sys-color-primary);
 						color: var(--md-sys-color-on-primary);
@@ -213,7 +210,7 @@
 				</h2>
 				<p class="text-sm mb-8" style="color: var(--md-sys-color-on-surface-variant);">All nearby rewards have been claimed.</p>
 				<button
-					class="h-14 px-8 text-base font-medium transition-colors active:scale-95 touch-manipulation"
+					class="h-14 px-8 w-full max-w-xs text-base font-medium transition-colors active:scale-95 touch-manipulation"
 					style="
 						border-radius: var(--md-sys-shape-corner-full);
 						background-color: var(--md-sys-color-primary);

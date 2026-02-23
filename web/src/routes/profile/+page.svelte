@@ -41,12 +41,11 @@
 
 	<!-- Wallet section — MD3 Outlined Card -->
 	<div
-		class="mb-6"
+		class="mb-6 p-5"
 		style="
 			animation: slide-up 0.3s cubic-bezier(0.2, 0, 0, 1);
 			border-radius: var(--md-sys-shape-corner-medium);
 			border: 1px solid var(--md-sys-color-outline-variant);
-			padding: 20px;
 		"
 	>
 		{#if wallet.connected && wallet.address}
@@ -135,8 +134,8 @@
 				background-color: var(--md-sys-color-surface-container-low);
 			"
 		>
-			<p class="text-xl font-semibold" style="color: var(--md-sys-color-primary);">${stats.totalEarned.toFixed(0)}</p>
-			<p class="text-xs mt-0.5" style="color: var(--md-sys-color-on-surface-variant);">Total Earned</p>
+			<p class="text-lg sm:text-xl font-semibold" style="color: var(--md-sys-color-primary);">${stats.totalEarned.toFixed(0)}</p>
+			<p class="text-[11px] sm:text-xs mt-0.5" style="color: var(--md-sys-color-on-surface-variant);">Total Earned</p>
 		</div>
 		<div
 			class="p-4 text-center"
@@ -145,8 +144,8 @@
 				background-color: var(--md-sys-color-surface-container-low);
 			"
 		>
-			<p class="text-xl font-semibold" style="color: var(--color-success);">{stats.dropsClaimed}</p>
-			<p class="text-xs mt-0.5" style="color: var(--md-sys-color-on-surface-variant);">Drops Claimed</p>
+			<p class="text-lg sm:text-xl font-semibold" style="color: var(--color-success);">{stats.dropsClaimed}</p>
+			<p class="text-[11px] sm:text-xs mt-0.5" style="color: var(--md-sys-color-on-surface-variant);">Drops Claimed</p>
 		</div>
 		<div
 			class="p-4 text-center"
@@ -155,8 +154,8 @@
 				background-color: var(--md-sys-color-surface-container-low);
 			"
 		>
-			<p class="text-xl font-semibold" style="color: var(--md-sys-color-tertiary);">{stats.currentStreak}</p>
-			<p class="text-xs mt-0.5" style="color: var(--md-sys-color-on-surface-variant);">Day Streak</p>
+			<p class="text-lg sm:text-xl font-semibold" style="color: var(--md-sys-color-tertiary);">{stats.currentStreak}</p>
+			<p class="text-[11px] sm:text-xs mt-0.5" style="color: var(--md-sys-color-on-surface-variant);">Day Streak</p>
 		</div>
 	</div>
 
@@ -200,7 +199,7 @@
 			</div>
 			<!-- MD3 Switch -->
 			<div
-				class="w-13 h-8 rounded-full transition-colors relative"
+				class="h-8 rounded-full transition-colors relative"
 				style="
 					width: 52px;
 					background-color: {darkMode ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-surface-container-highest)'};
@@ -244,7 +243,7 @@
 			</div>
 			<!-- MD3 Switch -->
 			<div
-				class="w-13 h-8 rounded-full transition-colors relative"
+				class="h-8 rounded-full transition-colors relative"
 				style="
 					width: 52px;
 					background-color: {notifications ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-surface-container-highest)'};

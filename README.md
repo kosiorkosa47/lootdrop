@@ -16,6 +16,17 @@
 
 ---
 
+## Screenshots
+
+Running on Solana Mobile Seeker:
+
+<p align="center">
+  <img src="docs/screenshots/home.png" width="200" alt="Home — Nearby Drops" />
+  <img src="docs/screenshots/scan.png" width="200" alt="Scan QR Code" />
+  <img src="docs/screenshots/rewards.png" width="200" alt="My Rewards" />
+  <img src="docs/screenshots/profile.png" width="200" alt="Profile & Settings" />
+</p>
+
 ## About
 
 LootDrop is a **sample PWA template** for Solana Mobile developers who want to publish mobile-optimized web apps to the **Solana dApp Store** using [Bubblewrap CLI](https://github.com/GoogleChromeLabs/bubblewrap).
@@ -147,7 +158,7 @@ lootdrop/
 
 - [x] **v0.1** — Project scaffold, smart contract, QR SDK
 - [x] **v0.2** — SvelteKit PWA with mobile UI
-- [ ] **v0.3** — Bubblewrap wrapping + dApp Store submission
+- [x] **v0.3** — TWA wrapping + Material Design 3 UI
 - [ ] **v0.4** — MWA integration in TWA context
 - [ ] **v0.5** — Merchant dashboard
 - [ ] **v1.0** — Mainnet launch

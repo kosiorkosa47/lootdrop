@@ -49,12 +49,11 @@
 
 <!-- MD3 Filled Card -->
 <button
-	class="w-full text-left transition-all duration-200 active:scale-[0.98] touch-manipulation relative overflow-hidden"
+	class="w-full text-left transition-all duration-200 active:scale-[0.98] touch-manipulation relative overflow-hidden p-4"
 	style="
 		animation: slide-up 0.3s cubic-bezier(0.2, 0, 0, 1) {index * 0.05}s both;
 		background-color: var(--md-sys-color-surface-container-low);
 		border-radius: var(--md-sys-shape-corner-medium);
-		padding: 16px;
 		opacity: {(claimed || drop.claimed) ? 0.5 : 1};
 	"
 	onclick={handleTap}
@@ -134,7 +133,7 @@
 
 		<!-- Dialog surface -->
 		<div
-			class="relative w-full max-w-sm"
+			class="relative w-full max-w-sm mx-4"
 			style="
 				animation: slide-up 0.25s cubic-bezier(0.2, 0, 0, 1);
 				background-color: var(--md-sys-color-surface-container-high);

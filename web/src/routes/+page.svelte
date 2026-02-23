@@ -42,12 +42,11 @@
 		<!-- Balance card (shown when wallet connected) -->
 		{#if wallet.connected}
 			<div
-				class="mb-4 mt-4"
+				class="mb-4 mt-4 p-4"
 				style="
 					animation: slide-up 0.3s cubic-bezier(0.2, 0, 0, 1);
 					background-color: var(--md-sys-color-primary-container);
 					border-radius: var(--md-sys-shape-corner-medium);
-					padding: 16px;
 				"
 			>
 				<div class="flex items-center justify-around">

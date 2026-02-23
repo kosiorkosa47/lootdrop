@@ -40,7 +40,7 @@
 	--sar: env(safe-area-inset-right, 0px);
 	--sab: env(safe-area-inset-bottom, 0px);
 	--sal: env(safe-area-inset-left, 0px);
-	--nav-bar-height: 80px;
+	--nav-bar-height: 64px;
 
 	/* MD3 Shape scale */
 	--md-sys-shape-corner-none: 0px;
@@ -122,6 +122,8 @@ body.light-mode {
 
 /* ── Base styles ────────────────────────────────────────────────── */
 html {
+	font-size: 16px;
+	-webkit-text-size-adjust: 100%;
 	font-family: 'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -181,4 +183,35 @@ button, a, [role="button"] {
 	0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; }
 	50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35; }
 	100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124; }
+}
+
+/* ── Responsive typography ─────────────────────────────────────── */
+h1 {
+	font-size: clamp(1.5rem, 5vw, 1.875rem);
+}
+
+h2 {
+	font-size: clamp(1.125rem, 4vw, 1.25rem);
+}
+
+/* ── Material ripple utility ───────────────────────────────────── */
+.md-ripple {
+	position: relative;
+	overflow: hidden;
+}
+
+.md-ripple::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(circle, currentColor 10%, transparent 10.01%) no-repeat 50%;
+	transform: scale(10);
+	opacity: 0;
+	transition: transform 0.4s, opacity 0.8s;
+}
+
+.md-ripple:active::after {
+	transform: scale(0);
+	opacity: 0.12;
+	transition: 0s;
 }

@@ -31,18 +31,17 @@
 
 	<!-- Stats card — MD3 primary-container instead of gradient -->
 	<div
-		class="mb-6"
+		class="mb-6 p-5"
 		style="
 			animation: slide-up 0.3s cubic-bezier(0.2, 0, 0, 1);
 			background-color: var(--md-sys-color-primary-container);
 			border-radius: var(--md-sys-shape-corner-large);
-			padding: 20px;
 		"
 	>
 		<p class="text-sm mb-1" style="color: var(--md-sys-color-on-primary-container); opacity: 0.7;">
 			Total Earned
 		</p>
-		<p class="text-4xl font-semibold mb-3" style="color: var(--md-sys-color-on-primary-container);">
+		<p class="text-3xl sm:text-4xl font-semibold mb-3" style="color: var(--md-sys-color-on-primary-container);">
 			${stats.totalEarned.toFixed(2)}
 		</p>
 		<div class="flex items-center gap-4">

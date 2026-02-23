@@ -30,7 +30,7 @@
 		background-color: var(--md-sys-color-surface-container);
 	"
 >
-	<div class="flex items-center justify-around mx-auto max-w-lg" style="height: 80px;">
+	<div class="flex items-center justify-around mx-auto" style="height: 64px;">
 		{#each tabs as tab (tab.id)}
 			{@const active = isActive(tab.href)}
 			<a
@@ -52,7 +52,7 @@
 					<!-- Icon -->
 					<div class="relative" style="color: {active ? 'var(--md-sys-color-on-secondary-container)' : 'var(--md-sys-color-on-surface-variant)'};">
 						{#if tab.icon === 'map'}
-							<svg class="w-6 h-6" viewBox="0 0 24 24" fill={active ? 'currentColor' : 'none'} stroke="currentColor" stroke-width={active ? 0 : 2} stroke-linecap="round" stroke-linejoin="round">
+							<svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill={active ? 'currentColor' : 'none'} stroke="currentColor" stroke-width={active ? 0 : 2} stroke-linecap="round" stroke-linejoin="round">
 								{#if active}
 									<path d="M1 6v16l7-4 8 4 7-4V2l-7 4-8-4-7 4z" />
 								{:else}
@@ -62,7 +62,7 @@
 								{/if}
 							</svg>
 						{:else if tab.icon === 'scan'}
-							<svg class="w-6 h-6" viewBox="0 0 24 24" fill={active ? 'currentColor' : 'none'} stroke={active ? 'none' : 'currentColor'} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill={active ? 'currentColor' : 'none'} stroke={active ? 'none' : 'currentColor'} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 								{#if active}
 									<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
 									<circle cx="12" cy="13" r="4" fill="var(--md-sys-color-secondary-container)" />
@@ -72,7 +72,7 @@
 								{/if}
 							</svg>
 						{:else if tab.icon === 'gift'}
-							<svg class="w-6 h-6" viewBox="0 0 24 24" fill={active ? 'currentColor' : 'none'} stroke={active ? 'none' : 'currentColor'} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill={active ? 'currentColor' : 'none'} stroke={active ? 'none' : 'currentColor'} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 								{#if active}
 									<path d="M20 12v10H4V12" /><rect x="2" y="7" width="20" height="5" />
 									<line x1="12" y1="22" x2="12" y2="7" stroke="var(--md-sys-color-secondary-container)" stroke-width="2" />
@@ -87,7 +87,7 @@
 								{/if}
 							</svg>
 						{:else if tab.icon === 'user'}
-							<svg class="w-6 h-6" viewBox="0 0 24 24" fill={active ? 'currentColor' : 'none'} stroke={active ? 'none' : 'currentColor'} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<svg class="w-6 h-6 sm:w-7 sm:h-7" viewBox="0 0 24 24" fill={active ? 'currentColor' : 'none'} stroke={active ? 'none' : 'currentColor'} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 								{#if active}
 									<circle cx="12" cy="7" r="4" />
 									<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
