@@ -96,7 +96,7 @@
 	<!-- Content area with pull transform -->
 	<div
 		class="transition-transform"
-		style="transform: translateY({pullDistance}px); transition-duration: {isPulling ? '0ms' : '300ms'};"
+		style="{pullDistance > 0 ? `transform: translateY(${pullDistance}px);` : ''} transition-duration: {isPulling ? '0ms' : '300ms'};"
 	>
 		{@render children()}
 	</div>
