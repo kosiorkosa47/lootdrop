@@ -1,17 +1,9 @@
 <script lang="ts">
 	import { getClaimedRewards, getUserStats, formatTokenAmount, formatTimeAgo } from '$lib/stores/app.svelte';
+	import { tokenColor } from '$lib/config';
 
 	const rewards = $derived(getClaimedRewards());
 	const stats = $derived(getUserStats());
-
-	function tokenColor(token: string): string {
-		switch (token) {
-			case 'SOL': return '#B58AFF';
-			case 'USDC': return '#14F195';
-			case 'BONK': return '#FFB74D';
-			default: return '#B58AFF';
-		}
-	}
 </script>
 
 <svelte:head>

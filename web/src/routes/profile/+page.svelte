@@ -1,5 +1,6 @@
 <script lang="ts">
 	import WalletButton from '$lib/components/WalletButton.svelte';
+	import { config } from '$lib/config';
 	import {
 		getWallet,
 		getUserStats,
@@ -274,7 +275,7 @@
 			Member since {formatMemberSince(stats.memberSince)}
 		</p>
 		<p class="text-xs mt-1" style="color: var(--md-sys-color-outline);">
-			LootDrop v0.1.0 &middot; Powered by Solana
+			{config.app.name} v{config.app.version} &middot; {config.app.poweredBy}
 		</p>
 	</div>
 </div>

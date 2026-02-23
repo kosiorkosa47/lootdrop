@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { isSplashVisible, dismissSplash } from '$lib/stores/app.svelte';
+	import { config } from '$lib/config';
 	import { onMount } from 'svelte';
 
 	let progress = $state(0);
@@ -51,19 +52,19 @@
 			class="text-2xl font-medium mb-1 tracking-tight"
 			style="color: var(--md-sys-color-on-surface); animation: fade-in 0.4s cubic-bezier(0.2, 0, 0, 1) 0.15s both;"
 		>
-			LootDrop
+			{config.app.name}
 		</h1>
 		<p
 			class="text-sm mb-2"
 			style="color: var(--md-sys-color-on-surface-variant); animation: fade-in 0.4s cubic-bezier(0.2, 0, 0, 1) 0.25s both;"
 		>
-			Walk in. Scan. Earn.
+			{config.app.tagline}
 		</p>
 		<p
 			class="text-xs mb-8"
 			style="color: var(--md-sys-color-outline); animation: fade-in 0.4s cubic-bezier(0.2, 0, 0, 1) 0.3s both;"
 		>
-			Powered by Solana
+			{config.app.poweredBy}
 		</p>
 
 		<!-- MD3 Circular progress indicator -->

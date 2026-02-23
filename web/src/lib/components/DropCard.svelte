@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Drop } from '$lib/types';
 	import { formatDistance, formatTokenAmount, formatExpiry, claimDrop } from '$lib/stores/app.svelte';
+	import { tokenColor, config } from '$lib/config';
 
 	interface Props {
 		drop: Drop;
@@ -35,15 +36,6 @@
 
 	function cancelClaim(): void {
 		showConfirm = false;
-	}
-
-	function tokenColor(token: string): string {
-		switch (token) {
-			case 'SOL': return '#B58AFF';
-			case 'USDC': return '#14F195';
-			case 'BONK': return '#FFB74D';
-			default: return '#B58AFF';
-		}
 	}
 </script>
 
