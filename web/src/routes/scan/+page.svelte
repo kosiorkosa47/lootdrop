@@ -86,8 +86,8 @@
 					class="h-14 px-8 w-full max-w-xs text-base font-medium transition-colors active:scale-95 touch-manipulation"
 					style="
 						border-radius: var(--md-sys-shape-corner-full);
-						background-color: var(--md-sys-color-primary);
-						color: var(--md-sys-color-on-primary);
+						background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+						color: #FFFFFF;
 					"
 					onclick={requestCamera}
 				>
@@ -139,8 +139,8 @@
 					class="h-14 px-8 w-full max-w-xs text-base font-medium transition-colors active:scale-95 touch-manipulation"
 					style="
 						border-radius: var(--md-sys-shape-corner-full);
-						background-color: var(--md-sys-color-primary);
-						color: var(--md-sys-color-on-primary);
+						background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+						color: #FFFFFF;
 					"
 					onclick={simulateScan}
 				>
@@ -185,8 +185,8 @@
 					class="h-14 px-8 w-full max-w-xs text-base font-medium transition-colors active:scale-95 touch-manipulation"
 					style="
 						border-radius: var(--md-sys-shape-corner-full);
-						background-color: var(--md-sys-color-primary);
-						color: var(--md-sys-color-on-primary);
+						background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+						color: #FFFFFF;
 					"
 					onclick={resetScanner}
 				>
@@ -213,8 +213,8 @@
 					class="h-14 px-8 w-full max-w-xs text-base font-medium transition-colors active:scale-95 touch-manipulation"
 					style="
 						border-radius: var(--md-sys-shape-corner-full);
-						background-color: var(--md-sys-color-primary);
-						color: var(--md-sys-color-on-primary);
+						background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+						color: #FFFFFF;
 					"
 					onclick={resetScanner}
 				>

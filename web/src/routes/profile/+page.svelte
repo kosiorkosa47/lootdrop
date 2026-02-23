@@ -65,7 +65,7 @@
 						{truncateAddress(wallet.address)}
 					</p>
 				</div>
-				<div class="w-3 h-3 rounded-full" style="background-color: var(--color-success);" title="Connected"></div>
+				<div class="w-3 h-3 rounded-full" style="background-color: #14F195;" title="Connected"></div>
 			</div>
 
 			<!-- Balance cards -->
@@ -134,7 +134,7 @@
 				background-color: var(--md-sys-color-surface-container-low);
 			"
 		>
-			<p class="text-lg sm:text-xl font-semibold" style="color: var(--md-sys-color-primary);">${stats.totalEarned.toFixed(0)}</p>
+			<p class="text-lg sm:text-xl font-semibold" style="color: #9945FF;">${stats.totalEarned.toFixed(0)}</p>
 			<p class="text-[11px] sm:text-xs mt-0.5" style="color: var(--md-sys-color-on-surface-variant);">Total Earned</p>
 		</div>
 		<div
@@ -144,7 +144,7 @@
 				background-color: var(--md-sys-color-surface-container-low);
 			"
 		>
-			<p class="text-lg sm:text-xl font-semibold" style="color: var(--color-success);">{stats.dropsClaimed}</p>
+			<p class="text-lg sm:text-xl font-semibold" style="color: #14F195;">{stats.dropsClaimed}</p>
 			<p class="text-[11px] sm:text-xs mt-0.5" style="color: var(--md-sys-color-on-surface-variant);">Drops Claimed</p>
 		</div>
 		<div
@@ -154,7 +154,7 @@
 				background-color: var(--md-sys-color-surface-container-low);
 			"
 		>
-			<p class="text-lg sm:text-xl font-semibold" style="color: var(--md-sys-color-tertiary);">{stats.currentStreak}</p>
+			<p class="text-lg sm:text-xl font-semibold" style="color: #FFB74D;">{stats.currentStreak}</p>
 			<p class="text-[11px] sm:text-xs mt-0.5" style="color: var(--md-sys-color-on-surface-variant);">Day Streak</p>
 		</div>
 	</div>
@@ -203,8 +203,8 @@
 				style="
 					width: 52px;
 					height: 32px;
-					background-color: {darkMode ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-surface-container-highest)'};
-					border: 2px solid {darkMode ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-outline)'};
+					background-color: {darkMode ? '#9945FF' : 'var(--md-sys-color-surface-container-highest)'};
+					border: 2px solid {darkMode ? '#9945FF' : 'var(--md-sys-color-outline)'};
 				"
 			>
 				<div
@@ -249,8 +249,8 @@
 				style="
 					width: 52px;
 					height: 32px;
-					background-color: {notifications ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-surface-container-highest)'};
-					border: 2px solid {notifications ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-outline)'};
+					background-color: {notifications ? '#9945FF' : 'var(--md-sys-color-surface-container-highest)'};
+					border: 2px solid {notifications ? '#9945FF' : 'var(--md-sys-color-outline)'};
 				"
 			>
 				<div

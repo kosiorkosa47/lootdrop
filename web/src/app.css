@@ -2,37 +2,37 @@
 
 /*
  * LootDrop — Material Design 3 (Material You) Theme
- * Seed color: Purple #6750A4
+ * Seed color: Solana Purple #9945FF / Green #14F195
  * Dark theme is default; light via .light-mode on body
  */
 
 /* ── MD3 Color Tokens (Dark — default) ──────────────────────────── */
 :root {
-	--md-sys-color-primary: #D0BCFF;
-	--md-sys-color-on-primary: #381E72;
-	--md-sys-color-primary-container: #4F378B;
-	--md-sys-color-on-primary-container: #EADDFF;
-	--md-sys-color-secondary: #CCC2DC;
-	--md-sys-color-on-secondary: #332D41;
-	--md-sys-color-secondary-container: #4A4458;
-	--md-sys-color-on-secondary-container: #E8DEF8;
-	--md-sys-color-tertiary: #EFB8C8;
-	--md-sys-color-tertiary-container: #633B48;
-	--md-sys-color-surface: #141218;
-	--md-sys-color-on-surface: #E6E0E9;
-	--md-sys-color-surface-variant: #49454F;
-	--md-sys-color-on-surface-variant: #CAC4D0;
-	--md-sys-color-outline: #938F99;
-	--md-sys-color-outline-variant: #49454F;
-	--md-sys-color-surface-container-lowest: #0F0D13;
-	--md-sys-color-surface-container-low: #1D1B20;
-	--md-sys-color-surface-container: #211F26;
-	--md-sys-color-surface-container-high: #2B2930;
-	--md-sys-color-surface-container-highest: #36343B;
-	--md-sys-color-error: #F2B8B5;
-	--md-sys-color-on-error: #601410;
-	--md-sys-color-inverse-surface: #E6E0E9;
-	--md-sys-color-inverse-on-surface: #322F35;
+	--md-sys-color-primary: #B58AFF;
+	--md-sys-color-on-primary: #2D006E;
+	--md-sys-color-primary-container: #7B2FD4;
+	--md-sys-color-on-primary-container: #E8DEFF;
+	--md-sys-color-secondary: #14F195;
+	--md-sys-color-on-secondary: #003920;
+	--md-sys-color-secondary-container: #0B5D3A;
+	--md-sys-color-on-secondary-container: #7DFFC0;
+	--md-sys-color-tertiary: #FFB74D;
+	--md-sys-color-tertiary-container: #5C3D00;
+	--md-sys-color-surface: #0E0E10;
+	--md-sys-color-on-surface: #E8E6EA;
+	--md-sys-color-surface-variant: #3A3840;
+	--md-sys-color-on-surface-variant: #C9C5CF;
+	--md-sys-color-outline: #8E8A95;
+	--md-sys-color-outline-variant: #3A3840;
+	--md-sys-color-surface-container-lowest: #080809;
+	--md-sys-color-surface-container-low: #161618;
+	--md-sys-color-surface-container: #1C1C1F;
+	--md-sys-color-surface-container-high: #262629;
+	--md-sys-color-surface-container-highest: #313134;
+	--md-sys-color-error: #FFB4AB;
+	--md-sys-color-on-error: #690005;
+	--md-sys-color-inverse-surface: #E8E6EA;
+	--md-sys-color-inverse-on-surface: #2F2F33;
 	--md-sys-color-scrim: #000000;
 
 	/* Safe area insets */
@@ -61,31 +61,31 @@
 
 /* ── MD3 Color Tokens (Light) ───────────────────────────────────── */
 body.light-mode {
-	--md-sys-color-primary: #6750A4;
+	--md-sys-color-primary: #7B2FD4;
 	--md-sys-color-on-primary: #FFFFFF;
-	--md-sys-color-primary-container: #EADDFF;
-	--md-sys-color-on-primary-container: #21005D;
-	--md-sys-color-secondary: #625B71;
+	--md-sys-color-primary-container: #E8DEFF;
+	--md-sys-color-on-primary-container: #2D006E;
+	--md-sys-color-secondary: #0B6E42;
 	--md-sys-color-on-secondary: #FFFFFF;
-	--md-sys-color-secondary-container: #E8DEF8;
-	--md-sys-color-on-secondary-container: #1D192B;
-	--md-sys-color-tertiary: #7D5260;
-	--md-sys-color-tertiary-container: #FFD8E4;
-	--md-sys-color-surface: #FEF7FF;
-	--md-sys-color-on-surface: #1D1B20;
-	--md-sys-color-surface-variant: #E7E0EC;
-	--md-sys-color-on-surface-variant: #49454F;
-	--md-sys-color-outline: #79747E;
-	--md-sys-color-outline-variant: #C4C0C9;
+	--md-sys-color-secondary-container: #A8F5C8;
+	--md-sys-color-on-secondary-container: #002111;
+	--md-sys-color-tertiary: #8B5E00;
+	--md-sys-color-tertiary-container: #FFDDB3;
+	--md-sys-color-surface: #FDFBFF;
+	--md-sys-color-on-surface: #1B1B1F;
+	--md-sys-color-surface-variant: #E5E1E9;
+	--md-sys-color-on-surface-variant: #47464F;
+	--md-sys-color-outline: #78767F;
+	--md-sys-color-outline-variant: #C8C5D0;
 	--md-sys-color-surface-container-lowest: #FFFFFF;
-	--md-sys-color-surface-container-low: #F7F2FA;
-	--md-sys-color-surface-container: #F3EDF7;
-	--md-sys-color-surface-container-high: #ECE6F0;
-	--md-sys-color-surface-container-highest: #E6E0E9;
-	--md-sys-color-error: #B3261E;
+	--md-sys-color-surface-container-low: #F5F2FA;
+	--md-sys-color-surface-container: #EFECF4;
+	--md-sys-color-surface-container-high: #E9E7EF;
+	--md-sys-color-surface-container-highest: #E3E1E9;
+	--md-sys-color-error: #BA1A1A;
 	--md-sys-color-on-error: #FFFFFF;
-	--md-sys-color-inverse-surface: #322F35;
-	--md-sys-color-inverse-on-surface: #F5EFF7;
+	--md-sys-color-inverse-surface: #303034;
+	--md-sys-color-inverse-on-surface: #F3F0F7;
 	--md-sys-color-scrim: #000000;
 }
 
@@ -117,7 +117,7 @@ body.light-mode {
 	--color-inverse-surface: var(--md-sys-color-inverse-surface);
 	--color-inverse-on-surface: var(--md-sys-color-inverse-on-surface);
 	--color-scrim: var(--md-sys-color-scrim);
-	--color-success: #4CAF50;
+	--color-success: #14F195;
 }
 
 /* ── Base styles ────────────────────────────────────────────────── */

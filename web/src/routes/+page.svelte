@@ -45,21 +45,21 @@
 				class="mb-4 mt-4 p-4"
 				style="
 					animation: slide-up 0.3s cubic-bezier(0.2, 0, 0, 1);
-					background-color: var(--md-sys-color-primary-container);
+					background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
 					border-radius: var(--md-sys-shape-corner-medium);
 				"
 			>
 				<div class="flex items-center justify-around">
 					<div class="text-center">
-						<p class="text-xs mb-0.5" style="color: var(--md-sys-color-on-primary-container); opacity: 0.7;">SOL Balance</p>
-						<p class="text-lg font-semibold" style="color: var(--md-sys-color-on-primary-container);">
+						<p class="text-xs mb-0.5" style="color: rgba(255,255,255,0.75);">SOL Balance</p>
+						<p class="text-lg font-semibold" style="color: #FFFFFF;">
 							{wallet.balanceSol.toFixed(2)}
 						</p>
 					</div>
-					<div class="w-px h-8" style="background-color: var(--md-sys-color-on-primary-container); opacity: 0.2;"></div>
+					<div class="w-px h-8" style="background-color: rgba(255,255,255,0.25);"></div>
 					<div class="text-center">
-						<p class="text-xs mb-0.5" style="color: var(--md-sys-color-on-primary-container); opacity: 0.7;">USDC Balance</p>
-						<p class="text-lg font-semibold" style="color: var(--md-sys-color-on-primary-container);">
+						<p class="text-xs mb-0.5" style="color: rgba(255,255,255,0.75);">USDC Balance</p>
+						<p class="text-lg font-semibold" style="color: #FFFFFF;">
 							${wallet.balanceUsdc.toFixed(2)}
 						</p>
 					</div>

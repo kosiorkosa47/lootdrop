@@ -57,7 +57,7 @@ vite.config.ts.timestamp-*
 
 # ─── Build artifacts ─────────────────────────────────────────────────────────
 android-build/
-screenshots/
+/screenshots/
 
 # ─── Secrets ──────────────────────────────────────────────────────────────────
 .env

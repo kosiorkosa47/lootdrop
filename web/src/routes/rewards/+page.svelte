@@ -6,10 +6,10 @@
 
 	function tokenColor(token: string): string {
 		switch (token) {
-			case 'SOL': return 'var(--md-sys-color-tertiary)';
-			case 'USDC': return 'var(--md-sys-color-primary)';
-			case 'BONK': return '#F5A623';
-			default: return 'var(--md-sys-color-primary)';
+			case 'SOL': return '#9945FF';
+			case 'USDC': return '#14F195';
+			case 'BONK': return '#FFB74D';
+			default: return '#9945FF';
 		}
 	}
 </script>
@@ -29,44 +29,44 @@
 		</h1>
 	</div>
 
-	<!-- Stats card — MD3 primary-container instead of gradient -->
+	<!-- Stats card — Solana gradient -->
 	<div
 		class="mb-6 p-5"
 		style="
 			animation: slide-up 0.3s cubic-bezier(0.2, 0, 0, 1);
-			background-color: var(--md-sys-color-primary-container);
+			background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
 			border-radius: var(--md-sys-shape-corner-large);
 		"
 	>
-		<p class="text-sm mb-1" style="color: var(--md-sys-color-on-primary-container); opacity: 0.7;">
+		<p class="text-sm mb-1" style="color: rgba(255,255,255,0.75);">
 			Total Earned
 		</p>
-		<p class="text-3xl sm:text-4xl font-semibold mb-3" style="color: var(--md-sys-color-on-primary-container);">
+		<p class="text-3xl sm:text-4xl font-semibold mb-3" style="color: #FFFFFF;">
 			${stats.totalEarned.toFixed(2)}
 		</p>
 		<div class="flex items-center gap-4">
 			<div class="flex items-center gap-1.5">
 				<div
 					class="w-6 h-6 rounded-full flex items-center justify-center"
-					style="background-color: var(--md-sys-color-primary); opacity: 0.3;"
+					style="background-color: rgba(255,255,255,0.2);"
 				>
-					<svg class="w-3.5 h-3.5" style="color: var(--md-sys-color-on-primary-container);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<svg class="w-3.5 h-3.5" style="color: #FFFFFF;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 						<polyline points="20 12 20 22 4 22 4 12" />
 						<rect x="2" y="7" width="20" height="5" />
 					</svg>
 				</div>
-				<span class="text-xs" style="color: var(--md-sys-color-on-primary-container);">{stats.dropsClaimed} claimed</span>
+				<span class="text-xs" style="color: #FFFFFF;">{stats.dropsClaimed} claimed</span>
 			</div>
 			<div class="flex items-center gap-1.5">
 				<div
 					class="w-6 h-6 rounded-full flex items-center justify-center"
-					style="background-color: var(--md-sys-color-primary); opacity: 0.3;"
+					style="background-color: rgba(255,255,255,0.2);"
 				>
-					<svg class="w-3.5 h-3.5" style="color: var(--md-sys-color-on-primary-container);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<svg class="w-3.5 h-3.5" style="color: #FFFFFF;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 						<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
 					</svg>
 				</div>
-				<span class="text-xs" style="color: var(--md-sys-color-on-primary-container);">{stats.currentStreak} day streak</span>
+				<span class="text-xs" style="color: #FFFFFF;">{stats.currentStreak} day streak</span>
 			</div>
 		</div>
 	</div>

@@ -39,10 +39,10 @@
 
 	function tokenColor(token: string): string {
 		switch (token) {
-			case 'SOL': return 'var(--md-sys-color-tertiary)';
-			case 'USDC': return 'var(--md-sys-color-primary)';
-			case 'BONK': return '#F5A623';
-			default: return 'var(--md-sys-color-primary)';
+			case 'SOL': return '#9945FF';
+			case 'USDC': return '#14F195';
+			case 'BONK': return '#FFB74D';
+			default: return '#9945FF';
 		}
 	}
 </script>
@@ -179,8 +179,8 @@
 				<button
 					class="h-10 px-6 rounded-full text-sm font-medium transition-colors active:scale-95 flex items-center gap-2"
 					style="
-						background-color: var(--md-sys-color-primary);
-						color: var(--md-sys-color-on-primary);
+						background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
+						color: #FFFFFF;
 					"
 					onclick={confirmClaim}
 					disabled={claiming}

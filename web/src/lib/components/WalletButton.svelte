@@ -30,7 +30,7 @@
 		onclick={handleDisconnect}
 		title="Tap to disconnect"
 	>
-		<div class="w-2 h-2 rounded-full" style="background-color: var(--color-success);"></div>
+		<div class="w-2 h-2 rounded-full" style="background-color: #14F195;"></div>
 		{truncateAddress(wallet.address)}
 	</button>
 {:else}

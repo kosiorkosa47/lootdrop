@@ -31,18 +31,18 @@
 		<div
 			class="w-24 h-24 rounded-3xl flex items-center justify-center mb-6"
 			style="
-				background-color: var(--md-sys-color-primary-container);
+				background: linear-gradient(135deg, #9945FF 0%, #14F195 100%);
 				animation: fade-in 0.3s cubic-bezier(0.2, 0, 0, 1);
 			"
 		>
 			<svg viewBox="0 0 80 80" class="w-14 h-14">
 				<path
 					d="M40 8 C40 8 16 40 16 56 C16 69.3 26.7 80 40 80 C53.3 80 64 69.3 64 56 C64 40 40 8 40 8Z"
-					fill="var(--md-sys-color-on-primary-container)"
+					fill="#FFFFFF"
 					opacity="0.9"
 				/>
-				<circle cx="40" cy="58" r="12" fill="var(--md-sys-color-primary-container)" />
-				<text x="40" y="64" text-anchor="middle" fill="var(--md-sys-color-on-primary-container)" font-family="'Roboto', system-ui" font-weight="700" font-size="14">S</text>
+				<circle cx="40" cy="58" r="12" fill="rgba(0,0,0,0.15)" />
+				<text x="40" y="64" text-anchor="middle" fill="#FFFFFF" font-family="'Roboto', system-ui" font-weight="700" font-size="14">S</text>
 			</svg>
 		</div>
 
@@ -54,10 +54,16 @@
 			LootDrop
 		</h1>
 		<p
-			class="text-sm mb-10"
+			class="text-sm mb-2"
 			style="color: var(--md-sys-color-on-surface-variant); animation: fade-in 0.4s cubic-bezier(0.2, 0, 0, 1) 0.25s both;"
 		>
 			Walk in. Scan. Earn.
+		</p>
+		<p
+			class="text-xs mb-8"
+			style="color: var(--md-sys-color-outline); animation: fade-in 0.4s cubic-bezier(0.2, 0, 0, 1) 0.3s both;"
+		>
+			Powered by Solana
 		</p>
 
 		<!-- MD3 Circular progress indicator -->
