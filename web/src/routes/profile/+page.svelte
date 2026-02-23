@@ -199,20 +199,22 @@
 			</div>
 			<!-- MD3 Switch -->
 			<div
-				class="h-8 rounded-full transition-colors relative"
+				class="shrink-0 rounded-full transition-colors duration-200 relative"
 				style="
 					width: 52px;
+					height: 32px;
 					background-color: {darkMode ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-surface-container-highest)'};
 					border: 2px solid {darkMode ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-outline)'};
 				"
 			>
 				<div
-					class="absolute rounded-full bg-white transition-all duration-200"
+					class="absolute rounded-full transition-all duration-200"
 					style="
 						width: {darkMode ? '24px' : '16px'};
 						height: {darkMode ? '24px' : '16px'};
-						top: {darkMode ? '0px' : '4px'};
-						left: {darkMode ? '24px' : '4px'};
+						top: 50%;
+						transform: translateY(-50%);
+						left: {darkMode ? '22px' : '6px'};
 						background-color: {darkMode ? 'var(--md-sys-color-on-primary)' : 'var(--md-sys-color-outline)'};
 					"
 				></div>
@@ -243,9 +245,10 @@
 			</div>
 			<!-- MD3 Switch -->
 			<div
-				class="h-8 rounded-full transition-colors relative"
+				class="shrink-0 rounded-full transition-colors duration-200 relative"
 				style="
 					width: 52px;
+					height: 32px;
 					background-color: {notifications ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-surface-container-highest)'};
 					border: 2px solid {notifications ? 'var(--md-sys-color-primary)' : 'var(--md-sys-color-outline)'};
 				"
@@ -255,8 +258,9 @@
 					style="
 						width: {notifications ? '24px' : '16px'};
 						height: {notifications ? '24px' : '16px'};
-						top: {notifications ? '0px' : '4px'};
-						left: {notifications ? '24px' : '4px'};
+						top: 50%;
+						transform: translateY(-50%);
+						left: {notifications ? '22px' : '6px'};
 						background-color: {notifications ? 'var(--md-sys-color-on-primary)' : 'var(--md-sys-color-outline)'};
 					"
 				></div>

@@ -1,14 +1,8 @@
-[
-  {
-    "relation": [
-      "delegate_permission/common.handle_all_urls"
-    ],
-    "target": {
-      "namespace": "android_app",
-      "package_name": "com.lootdrop.twa",
-      "sha256_cert_fingerprints": [
-        "AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99:AA:BB:CC:DD:EE:FF:00:11:22:33:44:55:66:77:88:99"
-      ]
-    }
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "app.vercel.web_rho_tawny_30.twa",
+    "sha256_cert_fingerprints": ["7B:16:82:F7:3A:87:45:CB:5F:0D:8C:D5:10:90:79:B3:03:79:0F:1F:83:B4:55:E3:53:F5:A2:8D:9D:60:44:AB"]
   }
-]
+}]
