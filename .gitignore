@@ -55,6 +55,10 @@ Thumbs.db
 web/build/
 vite.config.ts.timestamp-*
 
+# ─── Build artifacts ─────────────────────────────────────────────────────────
+android-build/
+screenshots/
+
 # ─── Secrets ──────────────────────────────────────────────────────────────────
 .env
 .env.local
@@ -62,3 +66,4 @@ vite.config.ts.timestamp-*
 *.key
 keypair.json
 id.json
+signing-key-info.txt
